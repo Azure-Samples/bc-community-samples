@@ -31,7 +31,7 @@ see: ./Asset.sol
 
 ---
 
-### Creating Microsoft Flow to automate Ethereum, triggered by PowerApp
+## Creating Microsoft Flow to automate Ethereum, triggered by PowerApp
 
 1. Create a Flow with a PowerApp Trigger
 2. Create "Initialize Variable" action
@@ -60,4 +60,29 @@ see: ./Asset.sol
 
 ---
 
-See the Powerpoint for screenshots
+# Screenshots
+
+---
+![PowerApp - start with Asset Checkout](./b6.png)
+
+---
+![PowerApp - execute the Flow App](./b8.png)
+
+---
+
+## Flow App
+
+![Create the flow and setup initial variables](./a1.png)
+
+---
+![Get the properties from the input](./a2.png)
+
+---
+![Get data from other sources](./a3.png)
+
+---
+![Setup approval workflows](./a4.png)
+
+---
+![Execute Ethereum Smart Contract connector](./a5.png)
+
