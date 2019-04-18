@@ -27,7 +27,6 @@ see: ./Asset.sol
      - must be Owner of the Asset
 
   - ReleaseReservation()
-
      - until the Reservation is complete, only the Reservation holder can release the reservation
 
 ---
