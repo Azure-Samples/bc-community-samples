@@ -9,7 +9,7 @@
 
 ## Asset example
 
-./Asset.sol
+see: ./Asset.sol
 
 - State
   - StateType State;    //reserved or available
