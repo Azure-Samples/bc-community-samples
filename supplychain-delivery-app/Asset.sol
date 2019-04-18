@@ -1,8 +1,12 @@
 pragma solidity ^0.5.0;
+
 contract Asset
 {
+
   enum StateType { CanBeReserved, Reserved }
+
   AssetDetails public asset;
+
   struct AssetDetails {
     StateType State;
     string Description;
@@ -13,9 +17,11 @@ contract Asset
     uint Longitude;
     uint Latitude;
   }
+
   event AssetCreated();
   event ReservationGranted(uint reservedDays, uint latitude, uint longitude);
   event ReservationReleased();
+
   constructor (string memory description) public
 	{
     asset = AssetDetails({
@@ -30,8 +36,10 @@ contract Asset
     });
     emit AssetCreated();
   }
+
   function estimateNow() private view returns (uint) { return (block.number * 15 seconds); }
   function expiresOn() private view returns (uint) { return (asset.ReservedOn + (asset.ReservedDays * 1 days)); }
+
   function Reserve(address reservedBy, uint reservedDays, uint longitude, uint latitude) public
 	{
     require(asset.Owner == msg.sender, "Only the current owner can assign a new reservation" );
@@ -49,8 +57,10 @@ contract Asset
   function ReleaseReservation() public
 	{
     require(asset.State == StateType.Reserved, "Not currently reserved");
-    bool isExpired = estimateNow() > expiresOn();
-    require(asset.ReservedBy == msg.sender || isExpired, "If the reservation is not expired, only the reservation owner can release it");
+    require(
+      asset.ReservedBy == msg.sender || estimateNow() > expiresOn(),
+      "If the reservation is not expired, only the reservation owner can release it"
+    );
 
     asset.State = StateType.CanBeReserved;
     asset.ReservedBy = address(0x0);
