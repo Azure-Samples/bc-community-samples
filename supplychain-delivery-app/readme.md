@@ -60,6 +60,45 @@ see: ./Asset.sol
 
 ---
 
+## Take Photo in PowerApp and save it to Azure Blob
+
+   1. In the PowerApp, add AzureBlobStorage connector
+
+   - In Azure, setup a storage account and configure a block blob
+   - Enter the Access Key and storageaccountname in the connector setup
+
+   2. Insert Media/Camera object onto a screen in PowerApp
+   3. Save the Photo to a variable when an event occurs - simplest is the Camera OnSelect event (when the user taps the picture) 
+         set(myphoto, Camera1.Photo)
+
+   4. Send the Photo to Azure using the AzureBlobStorage connector
+
+      - set a filename that you can send to Flow later:
+
+         Set(filename, Concatenate(GUID(),".jpg"));
+      
+      - call CreateBlobBlob, with the 
+         
+         Set(success,AzureBlobStorage.CreateBlockBlob("$web/images",filename,Camera2.Photo,{'Content-Type':"image/jpg"}));
+
+   5. Send the Photo filename to the Flow you previously configured, as another key/value pair
+
+---
+
+## In Flow, get the Photo metadata to send to Blockchain
+
+   1. Make sure the same AzureBlobStorage connector is setup for Flow
+   2. Add a step to get the photo filename sent from the PowerApp
+   3. Add the "Azure Blob Storage / Get Blob Metadata using path" action
+   4. Configure the same path to the block blob you saved the file to, and add the filename variable from step 2:
+
+      $web/images/@{variables('photo')}
+
+   5. Configure the smart contract to receive the image ETag or other metadata as needed, from the Blob metadata action
+
+---
+
+
 # Screenshots
 
 ---
@@ -86,3 +125,21 @@ see: ./Asset.sol
 ---
 ![Execute Ethereum Smart Contract connector](./a5.png)
 
+---
+
+## PowerApp - Camera
+
+---
+![Add blob storage account connector](./c9.png)
+
+---
+![Add Camera to a screen](./c10.png)
+
+---
+![Configure filename and image variables, and call AzureBlobStorage.CreateBlobBlob](./c12.png)
+
+
+## Flow - Photo metadata
+
+---
+![Get the Photo metadata](./c12.png)
