@@ -13,15 +13,8 @@
 
 This sample demonstrates:
 
-### Essential:
-
 - Using an Ethereum SmartContract to track an Approval workflow
 - Using Ethereum Blockchain Connector, Microsoft Flow and a PowerApps to interact with the SmartContract
-
-### Non-Essential (for the purpose of this sample):
-
-Can be removed in not important or too difficult to setup
-
 - Takes a picture from Camera in PowerApp
 - Uploads the picture to the blob and uses the metadata on the blockchain for Attestation
 - Uses Microsoft Flow actions to access OneDrive Excel files and send Outlook.com emails (you should use database and non-personal accounts in the real-world)
