@@ -1,4 +1,4 @@
-# Reservation Approval and Assignment on the Blockchain with Attestation and Location
+# Supply Chain – Delivery Confirmation And Attestation
 
 ## Table of contents
 
