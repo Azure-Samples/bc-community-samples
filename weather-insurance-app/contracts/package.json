@@ -1,0 +1,34 @@
+{
+  "name": "weather-insurance-contracts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clear-build && truffle compile",
+    "clear-build": "rm -rf build",
+    "develop": "truffle develop",
+    "test": "sh scripts/tests.sh",
+    "cov": "sh scripts/coverage.sh",
+    "flatten": "chmod +x ./scripts/flatten.sh && cd scripts && ./flatten.sh"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "chai-bignumber": "^2.0.2",
+    "openzeppelin-solidity": "1.12.0",
+    "tn-truffle-test-utils": "^1.0.4",
+    "truffle": "4.1.13",
+    "web3-utils": "^1.0.0-beta.34"
+  },
+  "devDependencies": {
+    "eth-gas-reporter": "^0.1.12",
+    "ethereumjs-util": "^6.0.0",
+    "ganache-cli": "^6.1.6",
+    "solidity-coverage": "^0.5.11",
+    "solidity-util": "github:willitscale/solidity-util",
+    "truffle-flattener": "^1.2.3",
+    "truffle-hdwallet-provider": "0.0.6"
+  }
+}
