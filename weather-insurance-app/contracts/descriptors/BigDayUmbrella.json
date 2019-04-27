@@ -1,0 +1,203 @@
+{
+  "ApplicationName": "BigDayUmbrella",
+  "DisplayName": "Big Day Umbrella!",
+  "Description": "An applications that allows you to insure weather for you big day.",
+  "ApplicationRoles": [
+    {
+      "Name": "Oracle",
+      "Description": "Microsoft MSN Weather API - put weather condition into smart-contract."
+    },
+    {
+      "Name": "Insurant",
+      "Description": "A person who can get insurance claim."
+    }
+  ],
+  "Workflows": [
+    {
+      "Name": "BigDayUmbrella",
+      "DisplayName": "Issue Claim",
+      "Description": "A workflow to create insurance policy and then get insurance claim if terms of policy violated.",
+      "Initiators": [ "Oracle" ],
+      "StartState": "Initial",
+      "Properties": [
+        {
+          "Name": "State",
+          "DisplayName": "State",
+          "Description": "Holds the state of the contract.",
+          "Type": {
+            "Name": "state"
+          }
+        },
+        {
+          "Name": "Insurant",
+          "DisplayName": "Insurant",
+          "Description": "A person who can get insurance claim.",
+          "Type": {
+            "Name": "Insurant"
+          }
+        },
+        {
+          "Name": "Oracle",
+          "DisplayName": "Oracle",
+          "Description": "Role that updates weather conditions",
+          "Type": {
+            "Name": "Oracle"
+          }
+        }
+      ],
+      "Constructor": {
+        "Parameters": [
+          {
+            "Name": "oracle",
+            "Description": "oracles address",
+            "DisplayName": "Oracle wallet address",
+            "Type": {
+              "Name": "address"
+            }
+          }
+        ]
+      },
+      "Functions": [
+        {
+          "Name": "setPolicyLocation",
+          "DisplayName": "Set location",
+          "Description": "...",
+          "Parameters": [
+            {
+              "Name": "lat",
+              "Description": "latitude",
+              "DisplayName": "Latitude",
+              "Type": {
+                "Name": "int"
+              }
+            },
+            {
+              "Name": "lon",
+              "Description": "longitude",
+              "DisplayName": "Longitude",
+              "Type": {
+                "Name": "int"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "setPolicyTimeframes",
+          "DisplayName": "Set time frame for policy",
+          "Description": "...",
+          "Parameters": [
+            {
+              "Name": "start",
+              "Description": "Start of issuance period",
+              "DisplayName": "Period Start",
+              "Type": {
+                "Name": "int"
+              }
+            },
+            {
+              "Name": "end",
+              "Description": "End of issuance period",
+              "DisplayName": "Period End",
+              "Type": {
+                "Name": "int"
+              }
+            }
+          ]
+        },
+        {
+          "Name": "submitPolicy",
+          "DisplayName": "Submit policy",
+          "Description": "...",
+          "Parameters": []
+        },
+        {
+          "Name": "updateMeasuredConditions",
+          "DisplayName": "Update measuered weather conditions",
+          "Description": "...",
+          "Parameters": [
+            {
+              "Name": "measureType",
+              "Description": "Type of measured condition",
+              "DisplayName": "Condition Id",
+              "Type": {
+                "Name": "int"
+              }
+            },
+            {
+              "Name": "value",
+              "Description": "Value",
+              "DisplayName": "Value of weather condition",
+              "Type": {
+                "Name": "int"
+              }
+            },
+            {
+              "Name": "timestamp",
+              "Description": "Timestamp",
+              "DisplayName": "Timestamp of the weather update",
+              "Type": {
+                "Name": "int"
+              }
+            }
+          ]
+        }
+      ],
+      "States": [
+        {
+          "Name": "Initial",
+          "DisplayName": "Initial",
+          "Description": "Waiting for submitted policy",
+          "PercentComplete": 33,
+          "Value": 0,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": ["Insurant"],
+              "AllowedInstanceRoles": [],
+              "Description": "...",
+              "Function": "submitPolicy",
+              "NextStates": [ "WaitingWeatherUpdate" ],
+              "DisplayName": "Submit policy"
+            }
+          ]
+        },
+        {
+          "Name": "WaitingWeatherUpdate",
+          "DisplayName": "Waiting Weather Update",
+          "Description": "...",
+          "PercentComplete": 66,
+          "Value": 1,
+          "Style": "Success",
+          "Transitions": [
+            {
+              "AllowedRoles": [],
+              "AllowedInstanceRoles": ["Oracle"],
+              "Description": "...",
+              "Function": "updateMeasuredConditions",
+              "NextStates": [ "ClaimApproved", "ClaimDeclined" ],
+              "DisplayName": "Updated measured weather conditions"
+            }
+          ]
+        },
+        {
+          "Name": "ClaimApproved",
+          "DisplayName": "Claim Approved",
+          "Description": "...",
+          "PercentComplete": 100,
+          "Value": 2,
+          "Style": "Success",
+          "Transitions": []
+        },
+        {
+          "Name": "ClaimDeclined",
+          "DisplayName": "Claim Declined",
+          "Description": "...",
+          "PercentComplete": 100,
+          "Value": 3,
+          "Style": "Failed",
+          "Transitions": []
+        }
+      ]
+    }
+  ]
+}
