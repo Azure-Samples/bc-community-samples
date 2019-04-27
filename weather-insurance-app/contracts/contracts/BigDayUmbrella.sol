@@ -1,4 +1,4 @@
-pragma solidity ^0.4.24;
+pragma solidity >=0.4.24 <0.6.0;
 
 contract BigDayUmbrella {
 
@@ -20,7 +20,7 @@ contract BigDayUmbrella {
     }
 
     enum weatherConditions { Sunny, Windy, Thunderstorm }
-    enum measuredConditions { Temperature, WindSpeed, WindGustSpeed, UVIndex, Pressure, Humidity, END }
+    enum measuredConditions { Temperature, WindSpeed, WindGustSpeed, UVIndex, Pressure, Humidity }
 
     struct policy {
         location Location;
@@ -40,11 +40,11 @@ contract BigDayUmbrella {
     address public Insurant;
     address public Oracle;
 
-    constructor(address oracle) public
+    constructor(address oracle, address insurant) public
     {
-        Insurant = msg.sender;
-        State = StateType.Initial;
+        Insurant = insurant;
         Oracle = oracle;
+        State = StateType.Initial;
     }
 
     // Methods to change policy
@@ -101,7 +101,7 @@ contract BigDayUmbrella {
     function setPolicyMeasuredValue(measuredConditions measureType, uint minValue, uint maxValue) public canChangePolicy {
         require(maxValue > minValue);
         require(int(measureType) >= 0);
-        require(measureType < measuredConditions.END);
+        require(measureType <= measuredConditions.Humidity);
 
         policy storage currentPolicy = Policy;
         currentPolicy.Measures[uint(measureType)] = measure(minValue, maxValue, true);
@@ -109,7 +109,7 @@ contract BigDayUmbrella {
 
     function getPolicyMeasuredValue(measuredConditions measureType) public view returns (uint256 minValue, uint256 maxValue, bool isSet) {
         require(int(measureType) >= 0);
-        require(measureType < measuredConditions.END);
+        require(measureType <= measuredConditions.Humidity);
 
         measure memory values = Policy.Measures[uint(measureType)];
         minValue = values.Min;
@@ -125,7 +125,7 @@ contract BigDayUmbrella {
         _;
     }
 
-    function updateMeasuredConditions(uint measureType, uint value, uint timestamp) public canUpdateConditions {
+    function updateMeasuredConditions(measuredConditions measureType, uint value, uint timestamp) public canUpdateConditions {
 
         require(timestamp > Policy.PeriodStart);
         
@@ -135,22 +135,22 @@ contract BigDayUmbrella {
             return;
         }
         
-        require(measureType >= 0);
-        require(measureType < uint(measuredConditions.END));
+        require(uint(measureType) >= 0);
+        require(uint(measureType) <= uint(measuredConditions.Humidity));
 
         measure memory values = Policy.Measures[uint(measureType)];
         if (values.IsSet && (values.Min > value || values.Max < value)) {
-            if (measureType == uint(measuredConditions.Temperature)) {
+            if (measureType == measuredConditions.Temperature) {
                 emit IssueClaim(Insurant, "Temperature limits exceeded");
-            } else if (measureType == uint(measuredConditions.WindSpeed)) {
+            } else if (measureType == measuredConditions.WindSpeed) {
                 emit IssueClaim(Insurant, "Wind speed limits exceeded");
-            } else if (measureType == uint(measuredConditions.WindGustSpeed)) {
+            } else if (measureType == measuredConditions.WindGustSpeed) {
                 emit IssueClaim(Insurant, "Wind gust speed limits exceeded");
-            } else if (measureType == uint(measuredConditions.UVIndex)) {
+            } else if (measureType == measuredConditions.UVIndex) {
                 emit IssueClaim(Insurant, "UV index limits exceeded");
-            } else if (measureType == uint(measuredConditions.Pressure)) {
+            } else if (measureType == measuredConditions.Pressure) {
                 emit IssueClaim(Insurant, "Pressure limits exceeded");
-            } else if (measureType == uint(measuredConditions.Humidity)) {
+            } else if (measureType == measuredConditions.Humidity) {
                 emit IssueClaim(Insurant, "Humidity limits exceeded");
             }
 

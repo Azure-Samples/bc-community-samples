@@ -52,7 +52,15 @@
             "Description": "oracles address",
             "DisplayName": "Oracle wallet address",
             "Type": {
-              "Name": "address"
+              "Name": "Oracle"
+            }
+          },
+          {
+            "Name": "insurant",
+            "Description": "Insurant's address",
+            "DisplayName": "Insurant's wallet address",
+            "Type": {
+              "Name": "Insurant"
             }
           }
         ]
@@ -91,7 +99,7 @@
               "Description": "Start of issuance period",
               "DisplayName": "Period Start",
               "Type": {
-                "Name": "int"
+                "Name": "time"
               }
             },
             {
@@ -99,7 +107,7 @@
               "Description": "End of issuance period",
               "DisplayName": "Period End",
               "Type": {
-                "Name": "int"
+                "Name": "time"
               }
             }
           ]
@@ -111,6 +119,38 @@
           "Parameters": []
         },
         {
+          "Name": "setPolicyMeasuredValue",
+          "DisplayName": "Set measured value",
+          "Description": "Set measured value to the policy",
+          "Parameters": [
+            {
+              "Name": "measureType",
+              "Description": "Type of measured condition",
+              "DisplayName": "Condition Id",
+              "Type": {
+                "Name": "enum",
+                "EnumValues": ["Temperature", "WindSpeed", "WindGustSpeed", "UVIndex", "Pressure", "Humidity"]
+              }
+            },
+            {
+              "Name": "minValue",
+              "Description": "Minimum Value",
+              "DisplayName": "Min Value",
+              "Type": {
+                "Name": "int"
+              }
+            },
+            {
+              "Name": "maxValue",
+              "Description": "Maximum Value",
+              "DisplayName": "Max Value",
+              "Type": {
+                "Name": "int"
+              }
+            }
+          ]
+        },
+        {
           "Name": "updateMeasuredConditions",
           "DisplayName": "Update measuered weather conditions",
           "Description": "...",
@@ -120,7 +160,8 @@
               "Description": "Type of measured condition",
               "DisplayName": "Condition Id",
               "Type": {
-                "Name": "int"
+                "Name": "enum",
+                "EnumValues": ["Temperature", "WindSpeed", "WindGustSpeed", "UVIndex", "Pressure", "Humidity"]
               }
             },
             {
@@ -136,7 +177,7 @@
               "Description": "Timestamp",
               "DisplayName": "Timestamp of the weather update",
               "Type": {
-                "Name": "int"
+                "Name": "time"
               }
             }
           ]
@@ -158,6 +199,30 @@
               "Function": "submitPolicy",
               "NextStates": [ "WaitingWeatherUpdate" ],
               "DisplayName": "Submit policy"
+            },
+            {
+              "AllowedRoles": ["Insurant"],
+              "AllowedInstanceRoles": [],
+              "Description": "...",
+              "Function": "setPolicyMeasuredValue",
+              "NextStates": [ "Initial" ],
+              "DisplayName": "Set measured condition to policy"
+            },
+            {
+              "AllowedRoles": ["Insurant"],
+              "AllowedInstanceRoles": [],
+              "Description": "...",
+              "Function": "setPolicyTimeframes",
+              "NextStates": [ "Initial" ],
+              "DisplayName": "Set time condition to policy"
+            },
+            {
+              "AllowedRoles": ["Insurant"],
+              "AllowedInstanceRoles": [],
+              "Description": "...",
+              "Function": "setPolicyLocation",
+              "NextStates": [ "Initial" ],
+              "DisplayName": "Set location condition to policy"
             }
           ]
         },
@@ -174,7 +239,7 @@
               "AllowedInstanceRoles": ["Oracle"],
               "Description": "...",
               "Function": "updateMeasuredConditions",
-              "NextStates": [ "ClaimApproved", "ClaimDeclined" ],
+              "NextStates": [ "WaitingWeatherUpdate", "ClaimApproved", "ClaimDeclined" ],
               "DisplayName": "Updated measured weather conditions"
             }
           ]
@@ -194,7 +259,7 @@
           "Description": "...",
           "PercentComplete": 100,
           "Value": 3,
-          "Style": "Failed",
+          "Style": "Failure",
           "Transitions": []
         }
       ]

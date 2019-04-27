@@ -36,7 +36,7 @@ contract('BigDayUmbrella', async (accounts) => {
     const oracle = accounts[1];
 
     describe('can instantiate smart-contract', async () => {
-        const app = await BigDayUmbrella.new(oracle, {from: insurant});
+        const app = await BigDayUmbrella.new(oracle, insurant);
         (await app.Insurant()).should.be.equal(insurant);
         (await app.State()).should.be.bignumber.equal(0);
     });
@@ -46,7 +46,7 @@ contract('BigDayUmbrella', async (accounts) => {
         let app;
 
         beforeEach(async () => {
-            app = await BigDayUmbrella.new(oracle, {from: insurant});
+            app = await BigDayUmbrella.new(oracle, insurant);
         });
 
         it('can set location for policy', async () => {
@@ -131,7 +131,7 @@ contract('BigDayUmbrella', async (accounts) => {
                 {from: insurant}).should.be.fulfilled;
 
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
-            
+
             await app.submitPolicy({from: insurant}).should.be.fulfilled;
             await app.submitPolicy({from: insurant}).should.be.rejected;
         });
@@ -154,7 +154,7 @@ contract('BigDayUmbrella', async (accounts) => {
     describe("# Update weather conditions", async () => {
         let app;
         beforeEach(async () => {
-            app = await BigDayUmbrella.new(oracle, {from: insurant});
+            app = await BigDayUmbrella.new(oracle, insurant);
             await app.setPolicyLocation(
                 new BigNumber(policy.location.lat * (10 ** 7)), 
                 new BigNumber(policy.location.lon * (10 ** 7)), 
