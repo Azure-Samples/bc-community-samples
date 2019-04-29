@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "method": "GET",
+        "schema": {}
+      }
+    }
+  },
+  "actions": {
+    "LastJson": {
+      "runAfter": {},
+      "type": "Function",
+      "inputs": {
+        "function": {
+          "id": "/subscriptions/02c27727-30e5-4ae2-b0a3-a42f80a73007/resourceGroups/test-rg/providers/Microsoft.Web/sites/toll-enforce/functions/LastJson"
+        },
+        "method": "GET"
+      }
+    },
+    "Response": {
+      "runAfter": {
+        "LastJson": [
+          "Succeeded"
+        ]
+      },
+      "type": "Response",
+      "kind": "Http",
+      "inputs": {
+        "body": "@body('LastJson')",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "statusCode": 200
+      }
+    }
+  },
+  "outputs": {}
+}

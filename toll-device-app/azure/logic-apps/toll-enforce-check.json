@@ -1,0 +1,165 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "schema": {
+          "properties": {
+            "carAddress": {
+              "type": "string"
+            },
+            "challengeHash": {
+              "type": "string"
+            },
+            "contractAddress": {
+              "type": "string"
+            },
+            "formId": {
+              "type": "string"
+            },
+            "r": {
+              "type": "string"
+            },
+            "s": {
+              "type": "string"
+            },
+            "v": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "formId",
+            "challengeHash",
+            "r",
+            "s",
+            "v",
+            "carAddress",
+            "contractAddress"
+          ],
+          "type": "object"
+        }
+      }
+    }
+  },
+  "actions": {
+    "Get_response_details": {
+      "runAfter": {},
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+          }
+        },
+        "method": "get",
+        "path": "/formapi/api/forms('@{encodeURIComponent('3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u')}')/responses",
+        "queries": {
+          "response_id": "@triggerBody()['formId']"
+        }
+      }
+    },
+    "Query_smart_contract_function_(incurring_no_gas_cost)": {
+      "runAfter": {
+        "Get_response_details": [
+          "Succeeded"
+        ]
+      },
+      "type": "ApiConnection",
+      "inputs": {
+        "body": {
+          "forCar": "@triggerBody()['carAddress']"
+        },
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['blockchainethereum_1']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/contract/functions/@{encodeURIComponent(encodeURIComponent('getZoneATimeout'))}/query",
+        "queries": {
+          "abi": "[{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneA\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneBTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"reports\",\"outputs\":[{\"name\":\"isPending\",\"type\":\"bool\"},{\"name\":\"bountyHunter\",\"type\":\"address\"},{\"name\":\"bountyExpirationUnixTime\",\"type\":\"uint256\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"stakedValue\",\"type\":\"uint256\"},{\"name\":\"rewardValue\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneC\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneCTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"isGood\",\"type\":\"bool\"}],\"name\":\"reconcileReport\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bountyTimePeriodSeconds\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneCTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"},{\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"name\":\"newZoneTimeoutsBytes\",\"type\":\"bytes32\"},{\"name\":\"carSigHash\",\"type\":\"bytes32\"},{\"name\":\"carSigV\",\"type\":\"uint8\"},{\"name\":\"carSigR\",\"type\":\"bytes32\"},{\"name\":\"carSigS\",\"type\":\"bytes32\"}],\"name\":\"topup\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneATimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneBTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minStakeValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneATimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"doReport\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_rewardValue\",\"type\":\"uint256\"},{\"name\":\"_minStakeValue\",\"type\":\"uint256\"},{\"name\":\"_bountyTimePeriodSeconds\",\"type\":\"uint256\"}],\"name\":\"admin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"expireReports\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneB\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"payeeHashToLastPaymentUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"purgeCars\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"newZoneATimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneBTimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneCTimeout\",\"type\":\"uint256\"}],\"name\":\"Topup\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"NewReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"BadReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"GoodReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"ExpiredReport\",\"type\":\"event\"}]",
+          "contractAddress": "@triggerBody()['contractAddress']"
+        }
+      }
+    },
+    "Query_smart_contract_function_(incurring_no_gas_cost)_2": {
+      "runAfter": {
+        "Query_smart_contract_function_(incurring_no_gas_cost)": [
+          "Succeeded"
+        ]
+      },
+      "type": "ApiConnection",
+      "inputs": {
+        "body": {
+          "forCar": "@triggerBody()['carAddress']"
+        },
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['blockchainethereum_1']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/contract/functions/@{encodeURIComponent(encodeURIComponent('getZoneBTimeout'))}/query",
+        "queries": {
+          "abi": "[{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneA\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneBTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"reports\",\"outputs\":[{\"name\":\"isPending\",\"type\":\"bool\"},{\"name\":\"bountyHunter\",\"type\":\"address\"},{\"name\":\"bountyExpirationUnixTime\",\"type\":\"uint256\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"stakedValue\",\"type\":\"uint256\"},{\"name\":\"rewardValue\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneC\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneCTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"isGood\",\"type\":\"bool\"}],\"name\":\"reconcileReport\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bountyTimePeriodSeconds\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneCTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"},{\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"name\":\"newZoneTimeoutsBytes\",\"type\":\"bytes32\"},{\"name\":\"carSigHash\",\"type\":\"bytes32\"},{\"name\":\"carSigV\",\"type\":\"uint8\"},{\"name\":\"carSigR\",\"type\":\"bytes32\"},{\"name\":\"carSigS\",\"type\":\"bytes32\"}],\"name\":\"topup\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneATimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneBTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minStakeValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneATimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"doReport\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_rewardValue\",\"type\":\"uint256\"},{\"name\":\"_minStakeValue\",\"type\":\"uint256\"},{\"name\":\"_bountyTimePeriodSeconds\",\"type\":\"uint256\"}],\"name\":\"admin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"expireReports\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneB\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"payeeHashToLastPaymentUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"purgeCars\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"newZoneATimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneBTimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneCTimeout\",\"type\":\"uint256\"}],\"name\":\"Topup\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"NewReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"BadReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"GoodReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"ExpiredReport\",\"type\":\"event\"}]",
+          "contractAddress": "@triggerBody()['contractAddress']"
+        }
+      }
+    },
+    "Query_smart_contract_function_(incurring_no_gas_cost)_3": {
+      "runAfter": {
+        "Query_smart_contract_function_(incurring_no_gas_cost)_2": [
+          "Succeeded"
+        ]
+      },
+      "type": "ApiConnection",
+      "inputs": {
+        "body": {
+          "forCar": "@triggerBody()['carAddress']"
+        },
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['blockchainethereum_1']['connectionId']"
+          }
+        },
+        "method": "post",
+        "path": "/contract/functions/@{encodeURIComponent(encodeURIComponent('getZoneCTimeout'))}/query",
+        "queries": {
+          "abi": "[{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneA\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneBTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"rewardValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"reports\",\"outputs\":[{\"name\":\"isPending\",\"type\":\"bool\"},{\"name\":\"bountyHunter\",\"type\":\"address\"},{\"name\":\"bountyExpirationUnixTime\",\"type\":\"uint256\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"stakedValue\",\"type\":\"uint256\"},{\"name\":\"rewardValue\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneC\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentCars\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneCTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"isGood\",\"type\":\"bool\"}],\"name\":\"reconcileReport\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"bountyTimePeriodSeconds\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneCTimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"},{\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"name\":\"newZoneTimeoutsBytes\",\"type\":\"bytes32\"},{\"name\":\"carSigHash\",\"type\":\"bytes32\"},{\"name\":\"carSigV\",\"type\":\"uint8\"},{\"name\":\"carSigR\",\"type\":\"bytes32\"},{\"name\":\"carSigS\",\"type\":\"bytes32\"}],\"name\":\"topup\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneATimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"getZoneBTimeout\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"minStakeValue\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"address\"}],\"name\":\"carToZoneATimeoutUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"carAddress\",\"type\":\"address\"},{\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"doReport\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"_rewardValue\",\"type\":\"uint256\"},{\"name\":\"_minStakeValue\",\"type\":\"uint256\"},{\"name\":\"_bountyTimePeriodSeconds\",\"type\":\"uint256\"}],\"name\":\"admin\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"expireReports\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"isPermittedInZoneB\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"bytes32\"}],\"name\":\"payeeHashToLastPaymentUnixTime\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"name\":\"currentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"getNumberCurrentReports\",\"outputs\":[{\"name\":\"\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"purgeCars\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"byWhom\",\"type\":\"bytes32\"},{\"indexed\":false,\"name\":\"newZoneATimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneBTimeout\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"newZoneCTimeout\",\"type\":\"uint256\"}],\"name\":\"Topup\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"},{\"indexed\":false,\"name\":\"carXCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"carYCoordinate\",\"type\":\"uint256\"},{\"indexed\":false,\"name\":\"zoneIndex\",\"type\":\"uint256\"}],\"name\":\"NewReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"BadReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"GoodReport\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":false,\"name\":\"forCar\",\"type\":\"address\"}],\"name\":\"ExpiredReport\",\"type\":\"event\"}]",
+          "contractAddress": "@triggerBody()['contractAddress']"
+        }
+      }
+    },
+    "Response": {
+      "runAfter": {
+        "Query_smart_contract_function_(incurring_no_gas_cost)_3": [
+          "Succeeded"
+        ]
+      },
+      "type": "Response",
+      "kind": "Http",
+      "inputs": {
+        "body": {
+          "zoneATimeout": "@{body('Query_smart_contract_function_(incurring_no_gas_cost)')?['Function Output']}",
+          "zoneBTimeout": "@{body('Query_smart_contract_function_(incurring_no_gas_cost)_2')?['Function Output']}",
+          "zoneCTimeout": "@{body('Query_smart_contract_function_(incurring_no_gas_cost)_3')?['Function Output']}"
+        },
+        "headers": {
+          "Content-Type": "application/json",
+          "output": "@{body('Query_smart_contract_function_(incurring_no_gas_cost)')?['Function Output']}"
+        },
+        "statusCode": 200
+      }
+    }
+  },
+  "outputs": {}
+}

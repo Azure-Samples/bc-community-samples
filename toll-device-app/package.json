@@ -1,0 +1,45 @@
+{
+  "name": "gamified-citizen-toll-enforcement",
+  "version": "1.0.0",
+  "description": "Ethereal Hackathon Demo :: Microsoft + Ethereum + overhide",
+  "main": "./dist/main.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --module-bind js=babel-loader",
+    "serve": "http-server ./dist",
+    "watch": "webpack --module-bind js=babel-loader --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JakubNer/gamified-citizen-toll-enforcement.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/JakubNer/gamified-citizen-toll-enforcement/issues"
+  },
+  "homepage": "https://github.com/JakubNer/gamified-citizen-toll-enforcement#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.3",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/preset-env": "^7.4.3",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.5",
+    "copy-webpack-plugin": "^5.0.3",
+    "hard-source-webpack-plugin": "^0.13.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "http-server": "0.11.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.30.0",
+    "webpack-cli": "^3.3.1"
+  },
+  "dependencies": {
+    "ledgers.js": "github:overhide/ledgers.js",
+    "web3-eth-accounts": "1.0.0-beta.52"
+  }
+}

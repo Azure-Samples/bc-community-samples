@@ -1,0 +1,116 @@
+{
+  "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "$connections": {
+      "defaultValue": {},
+      "type": "Object"
+    }
+  },
+  "triggers": {
+    "manual": {
+      "type": "Request",
+      "kind": "Http",
+      "inputs": {
+        "method": "GET",
+        "relativePath": "formId/{formId}",
+        "schema": {}
+      }
+    }
+  },
+  "actions": {
+    "Get_response_details": {
+      "runAfter": {},
+      "type": "ApiConnection",
+      "inputs": {
+        "host": {
+          "connection": {
+            "name": "@parameters('$connections')['microsoftforms']['connectionId']"
+          }
+        },
+        "method": "get",
+        "path": "/formapi/api/forms('@{encodeURIComponent('3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u')}')/responses",
+        "queries": {
+          "response_id": "@triggerOutputs()['relativePathParameters']['formId']"
+        }
+      }
+    },
+    "Response": {
+      "runAfter": {
+        "Get_response_details": [
+          "Succeeded"
+        ]
+      },
+      "type": "Response",
+      "kind": "Http",
+      "inputs": {
+        "body": {
+          "email": "@{body('Get_response_details')?['r7a8cf6cef123430a8a7a5d22621f2754']}",
+          "publicAddress__dollars": "@{body('Get_response_details')?['rb8d33d19eb384b6aac2c67e3034feaac']}",
+          "publicAddress__ethers": "@{body('Get_response_details')?['r0390f03707544cc4af0b1b0493cbcca4']}",
+          "remunerationApiUrl__dollars": "@{body('Get_response_details')?['rfdb2cc63a8d3497cb5c741f28c112112']}",
+          "remunerationApiUrl__ethers": "@{body('Get_response_details')?['r02ade678d07d4649a7323cfdd49ed13c']}",
+          "zoneA__dollars": "@{body('Get_response_details')?['r85250a44f7c342f497918f7e6af3044e']}",
+          "zoneA__ethers": "@{body('Get_response_details')?['rca6dcb3207c5401f9c838333c7dedb69']}",
+          "zoneB__dollars": "@{body('Get_response_details')?['rffafeb30bb3b41a1a3ab492132168974']}",
+          "zoneB__ethers": "@{body('Get_response_details')?['r3d3cb88f27404e75a7328d8154410c30']}",
+          "zoneC__dollars": "@{body('Get_response_details')?['rfc0904818b4b45a8a9879e581feac078']}",
+          "zoneC__ethers": "@{body('Get_response_details')?['rc06b10445cad4331ac3f3e2f89f0b7a2']}"
+        },
+        "schema": {
+          "properties": {
+            "email": {
+              "type": "string"
+            },
+            "publicAddress__dollars": {
+              "type": "string"
+            },
+            "publicAddress__ethers": {
+              "type": "string"
+            },
+            "remunerationApiUrl__dollars": {
+              "type": "string"
+            },
+            "remunerationApiUrl__ethers": {
+              "type": "string"
+            },
+            "zonaA__dollars": {
+              "type": "string"
+            },
+            "zonaB__dollars": {
+              "type": "string"
+            },
+            "zonaC__dollars": {
+              "type": "string"
+            },
+            "zoneA__ethers": {
+              "type": "string"
+            },
+            "zoneB__ethers": {
+              "type": "string"
+            },
+            "zoneC__ethers": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "email",
+            "publicAddress__dollars",
+            "publicAddress__ethers",
+            "remunerationApiUrl__dollars",
+            "remunerationApiUrl__ethers",
+            "zonaA__dollars",
+            "zoneA__ethers",
+            "zonaB__dollars",
+            "zoneB__ethers",
+            "zonaC__dollars",
+            "zoneC__ethers"
+          ],
+          "type": "object"
+        },
+        "statusCode": 200
+      }
+    }
+  },
+  "outputs": {}
+}
