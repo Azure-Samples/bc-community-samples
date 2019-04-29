@@ -259,6 +259,38 @@ The following figure models the workflows involved in the system:
 
 ![](docs/flows.png)
 
+## Ledger-Based Authorizations
+
+This demo uses the [ledger-based authorizations](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#ledger-based-authorization) concept for currency agnostic toll fee payments: dollars and ethers.
+
+*Ledger-based authorization* is a very simple concept where fiat and crypto payments are available on a pseudonymous public ledger with each participant being able to prove ownership of their entry on this ledger (crypto PKI).  More literature on the subject:
+
+* [quick summary](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#ledger-based-authorization)
+* [detailed write-up](https://medium.com/@jakub.ner/introduction-to-overhide-ledger-and-motivation-for-why-its-useful-f9c987f2205f?source=friends_link&sk=18f6e8a90efbbc4ac28df50ab50833de)
+* [video introduction](https://www.youtube.com/watch?v=moc1P9W0yTk)
+
+Using the [overhide remuneration API](https://rinkeby.ethereum.overhide.io/swagger.html) in a backend and the [ledgers.js](https://www.npmjs.com/package/ledgers.js) library in a login-page a developer can provide authorization into different tiers of access with multiple currencies--hedging against new currencies with these abstractions.  Future-proof Code need only be written once.  The relationship between the *API* and [ledgers.js](https://www.npmjs.com/package/ledgers.js) is summarized in the [quick summary write-up](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#the-remuneration-api-and-ledgersjs)
+
+### Azure Serverless Backend
+
+In this demo we used the Azure serverless backend (Azure Logic Apps) to allow toll payment in multiple currencies.  The backend implementation to verify the payment--regardless of currency--are two simple HTTP calls in the [toll-enforce-topup](azure/logic-apps/toll-enforce-topup.json) Logic App.
+
+![](docs/remuneration.png)
+
+The currency specific components in the above flow deal with the unit conversion from the human-readable [fees-schedule](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u) (dollars and ethers) to the denomination that the API deals with (cents and wei).
+
+The two API calls are identical, they just go against different remuneration provider URLs; as [configured with the fees-schedule](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u)
+
+The two API calls on Ethereum's Rinkeby testnet:  https://rinkeby.ethereum.overhide.io/swagger.html
+
+The two API calls on [overhide-ledger's](https://test.ohledger.com) test instance:  https://test.ohledger.com/swagger.html
+
+### Login Page
+
+### Read More
+
+Please visit [overhide.io](https://overhide.io) and [overhide-ledger](https://ohledger.com) for more.
+
 ## Appendix :: Logic Apps (screenshots)
 
 ### [toll-enforce-topup](azure/logic-apps/toll-enforce-topup.json)
