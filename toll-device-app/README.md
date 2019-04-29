@@ -4,7 +4,7 @@
 >
 > Please do read through the rest of this write-up to understand what's behind these links.
 >
-> * [ReactJS demo app (off of GitHub pages in original repo)](https://jakubner.github.io/bc-community-samples/toll-device-app/dist/index.html)
+> * [ReactJS demo app (off of GitHub pages in original repo)](https://jakubner.github.io/gamified-citizen-toll-enforcement/dist/index.html)
 > * [City onboarding form](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u)
 > * [Azure Logic Apps and Functions](azure)
 > * [Ethereum contract](contract)
@@ -12,7 +12,7 @@
 
 > **Quick Start**
 >
-> 1. visit [demo app](https://jakubner.github.io/bc-community-samples/toll-device-app/dist/index.html)
+> 1. visit [demo app](https://jakubner.github.io/gamified-citizen-toll-enforcement/dist/index.html)
 >
 > *OR*
 >
@@ -182,7 +182,7 @@ None of the participants know each other.  Everyone is pseudonymous.  But everyt
 
 To run the demo you can either:
 
-* visit [this forked GitHub page](https://jakubner.github.io/bc-community-samples/toll-device-app/dist/index.html)
+* visit [this forked GitHub page](https://jakubner.github.io/gamified-citizen-toll-enforcement/dist/index.html)
 * build and run yourself:
     * sync repo
     * `npm run install`
