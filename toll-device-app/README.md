@@ -269,7 +269,7 @@ This demo uses the [ledger-based authorizations](https://github.com/overhide/ove
 * [detailed write-up](https://medium.com/@jakub.ner/introduction-to-overhide-ledger-and-motivation-for-why-its-useful-f9c987f2205f?source=friends_link&sk=18f6e8a90efbbc4ac28df50ab50833de)
 * [video introduction](https://www.youtube.com/watch?v=moc1P9W0yTk)
 
-Using the [overhide remuneration API](https://rinkeby.ethereum.overhide.io/swagger.html) in a backend and the [ledgers.js](https://www.npmjs.com/package/ledgers.js) library in a login-page a developer can provide authorization into different tiers of access with multiple currencies--hedging against new currencies with these abstractions.  Future-proof Code need only be written once.  The relationship between the *API* and [ledgers.js](https://www.npmjs.com/package/ledgers.js) is summarized in the [quick summary write-up](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#the-remuneration-api-and-ledgersjs)
+Using the [overhide remuneration API](https://rinkeby.ethereum.overhide.io/swagger.html) in a backend and the [ledgers.js](https://www.npmjs.com/package/ledgers.js) library in a login-page a developer can provide authorization into different tiers of access with multiple currencies--hedging against new currencies with these abstractions.  Future-proof code need only be written once.  The relationship between the *API* and [ledgers.js](https://www.npmjs.com/package/ledgers.js) is summarized in the [quick summary write-up](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#the-remuneration-api-and-ledgersjs)
 
 ### Azure Serverless Backend
 
@@ -279,17 +279,17 @@ In this demo we used the Azure serverless backend (Azure Logic Apps) to allow to
 
 The currency specific components in the above flow deal with the unit conversion from the human-readable [fees-schedule](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u) (dollars and ethers) to the denomination that the API deals with (cents and wei).
 
-The two API calls are identical, they just go against different remuneration provider URLs; as [configured with the fees-schedule](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u)
+The two API calls are identical, they just go against different remuneration provider URLs; as [configured with the fees-schedule](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u).
 
-The two API calls on Ethereum's Rinkeby testnet:  https://rinkeby.ethereum.overhide.io/swagger.html
+The two API calls on Ethereum's Rinkeby testnet:  https://rinkeby.ethereum.overhide.io/swagger.html.
 
-The two API calls on [overhide-ledger's](https://test.ohledger.com) test instance:  https://test.ohledger.com/swagger.html
+The two API calls on [overhide-ledger's](https://test.ohledger.com) test instance:  https://test.ohledger.com/swagger.html.
 
 ### Login Page
 
-The *Car Top-Up App*--which fully resides in the [src/lib/CarPanel.jsx](src/lib/CarPanel.jsx) React component--is the login page.
+The *Car Top-Up App* is the login page.  The actual topup component fully resides in the [src/lib/CarPanelTopUp.jsx](src/lib/CarPanelTopUp.jsx) React component.
 
-It's use of the `oh$` import from [ledgers.js](https://www.npmjs.com/package/ledgers.js) are all the integration points from presenting *ledger-based authorizations* to the user.
+This component's use of the `oh$` import from [ledgers.js](https://www.npmjs.com/package/ledgers.js) are all the integration points for presenting *ledger-based authorizations* to the user.
 
 A quick overview of the login-page [ledgers.js](https://www.npmjs.com/package/ledgers.js) is available in [this video](https://www.youtube.com/watch?v=-uI806gNnFg).
 
