@@ -40,7 +40,7 @@ This is a demo of several things:
     * smart-contract used by many anonymous entities
         * cars 
         * citizen bounty hunters
-1. leveraging Microsoft's [Azure](https://azure.microsoft.com/en-us/) "serverless" backend with [overhide's](https://overhide.io) [remuneration APIs](https://www.npmjs.com/package/ledgers.js#3-ecosystem)
+1. leveraging Microsoft's [Azure](https://azure.microsoft.com/en-us/) "serverless" backend with [ledger-based authorizations](#ledger-based-authorizations)
     * no need to write own backend code
     * multi-currency support: fiat and crypto
 
@@ -74,7 +74,7 @@ Checkpoints (1) can be done centrally by the city using Azure's backend.  Althou
 
 Static traffic (2) within a zone can be toll-checked by anyone; decentralized, incentivized, and pseudonymous. 
 
-### Values
+### System Values (Goals)
 
 The participants in this system are:
 
@@ -108,7 +108,7 @@ With respect to *the car* (driver) the system:
     * flexibility of toll fee payment currency
 * provides fees payment accountability
     * permits can be checked on Ethereum blockchain
-    * payments can be checked on any ledger supported by [overhide.io](https://overhide.io)
+    * payments can be checked on any ledger provided by [ledger-based-authorizations](#ledger-based-authorizations)
 
 With respect to *the citizen bounty hunter* the system:
 
@@ -127,13 +127,13 @@ With respect to *the Traffic Authority* the system:
     * same Azure workflows can apply to many different cities
     * Toll Enforcement as a Service (TEaaS)
 * provides inexpensive addition of currencies (Euros, BitCoin, DAI)
-    * no code adjustment<sup>1</sup> in the user facing ReactJS apps ([ledgers.js](https://www.npmjs.com/package/ledgers.js))
-    * no code adjustment<sup>1,2</sup> in the Azure backend as abstracted from remuneration using overhide's [remuneration APIs](https://www.npmjs.com/package/ledgers.js#3-ecosystem)
+    * no code adjustment<sup>1</sup> in the user facing ReactJS apps (see [ledger-based authorizations](#ledger-based-authorizations))
+    * no code adjustment<sup>1,2</sup> in the Azure backend as abstracted from remuneration using [ledger-based authorizations](#ledger-based-authorizations)
 * expects no collection of personally identifiable information by the city Traffic Authority
-    * the city Traffic Authority knows entities paying for toll access (cars/drivers) only as [overhide.io](https://overhide.io) furnished pseudonymous public addresses
+    * the city Traffic Authority knows entities paying for toll access (cars/drivers) only as [ledger-based authorizations](#ledger-based-authorizations) furnished pseudonymous public addresses
         * this, even for dollars:
         * [Stripe](https://stripe.com) is the payment gateway storing personally identifiable information
-        * the [overhide.io](https://overhide.io) APIs enable pseudonymous [ledger-based authorizations](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#ledger-based-authorization)
+        * the APIs enable pseudonymous [ledger-based authorizations](#ledger-based-authorizations)
     * the city Traffic Authority doesn't know who the citizen bounty hunters are
         * Ethereum public addresses
         * stakes and bounties *do* involve value transfer on the Ethereum blockchain
@@ -142,7 +142,7 @@ With respect to *the Traffic Authority* the system:
 >
 > <sup>1</sup> the demo in this repo has a hardcoded fees-schedule configuration for dollars and ethers in three payment zones; this demo wasn't written in a generic way to require "no code adjustments"
 >
-> <sup>2</sup> as of this writing only dollars and ethers are abstracted via overhide's [remuneration APIs](https://www.npmjs.com/package/ledgers.js#3-ecosystem), additional currencies would require authoring and standing up implementation of the APIs for those currencies; it's just two endpoints (see [sample swagger](https://rinkeby.ethereum.overhide.io/swagger.html))
+> <sup>2</sup> as of this writing only dollars and ethers are abstracted via [ledger-based authorizations](#ledger-based-authorizations), additional currencies would require authoring and standing up implementation of the APIs
 
 ## Benefits
 
@@ -150,7 +150,7 @@ With respect to *the Traffic Authority* the system:
 
 The city traffic authority works with their trusted secure workflows on Azure.  They keep their costs down by not implementing and running their own backend infrastructure.  The city can contract out for software development work focused on the functionality and not plumbing.
 
-The Azure backend is a perfect place to validate toll top-up payments.  Since the city accepts multiple currencies from toll-payers (via *zone topup app*), the top-up payments are not value-transfers within the system's Ethereum contract.  The city keeps implementation, data-management, and liability costs down by leveraging [ledger-based authorizations](https://github.com/overhide/overhide/blob/master/docs/remuneration-api.md#ledger-based-authorization) with Azure as the backend.
+The Azure backend is a perfect place to validate toll top-up payments.  Since the city accepts multiple currencies from toll-payers (via *zone topup app*), the top-up payments are not value-transfers within the system's Ethereum contract.  The city keeps implementation, data-management, and liability costs down by leveraging [ledger-based authorizations](#ledger-based-authorizations) with Azure as the backend.
 
 The city further saves on enforcement.  The enforcement officers' job is highly automated through the Ethereum contract event log.  The audit trail left by the Ethereum evnet log keeps toll violator litigation costs down to a minimum.
 
