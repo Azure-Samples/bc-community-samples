@@ -101,7 +101,7 @@ With respect to *the car* (driver) the system:
     * top-up payments for permits are processed by the city's Azure backend cluster
 * provides enforcement accountability: a means to audit time, location, and existence of transgression reports and tickets
     * built into Ethereum contract
-    * no Ethereum events, no grounds for a ticket
+    * if no Ethereum event logged, no grounds for a ticket
     * Ethereum contract is a vessel for accountability, requires human judgement for resolution
 * provides convenience
     * no need to register with the city: perfect for out-of-town tourists
@@ -114,11 +114,11 @@ With respect to *the citizen bounty hunter* the system:
 
 * provides pseudonimity
     * they are Ethereum public addresses
-    * stakes and bounties *do* involve value transfer on the Ethereum blockchain
+    * stakes and bounties *do* involve value transfer on the Ethereum blockchain with this contract
 * provides decentralization
     * hunters interact with system outside of the city Traffic Authority's Azure backend
 * expects honesty 
-    * bount hunters do risk a staked amount of ethers when reporting 
+    * bounty hunters do risk a staked amount of ethers when reporting 
 
 With respect to *the Traffic Authority* the system:
 
@@ -140,9 +140,9 @@ With respect to *the Traffic Authority* the system:
 
 > Notes
 >
-> <sup>1</sup> the demo in this repo has a hardcoded fees-schedule configuration for dollars and ethers in three payment zones; this demo wasn't written in a generic way to require "no code adjustments"
+> <sup>1</sup> the demo in this repo makes assumptions regarding the fees-schedule having configuration for dollars and ethers in three payment zones; for readability, this demo's fees-schedule parsing wasn't implemented in a generic way to require "no code adjustments"
 >
-> <sup>2</sup> as of this writing only dollars and ethers are abstracted via [ledger-based authorizations](#ledger-based-authorizations), additional currencies would require authoring and standing up implementation of the APIs
+> <sup>2</sup> as of this writing only dollars and ethers are abstracted via [ledger-based authorizations](#ledger-based-authorizations), additional currencies can be easily added
 
 ## Benefits
 
@@ -154,11 +154,13 @@ The Azure backend is a perfect place to validate toll top-up payments.  Since th
 
 The city further saves on enforcement.  The enforcement officers' job is highly automated through the Ethereum contract event log.  The audit trail left by the Ethereum evnet log keeps toll violator litigation costs down to a minimum.
 
-The drivers benefit by not having to register their cars--having to deal with any bureaucracy.  Both locals and out-of-town tourists can just as quickly onboard with the *zone topup app* and drive in.  No special hardware for the drivers to acquire--no transponders or costly or fickle GPS trackers--just a QR code in the right spot behind the windshield.  Flexibility of payment (for tolls) furthers the city's mission to be accessible to all.
+The drivers benefit by not having to register their cars--having to deal with any bureaucracy.  Both locals and out-of-town tourists can just as quickly onboard with the *zone topup app* and drive in.  No special hardware for the drivers to acquire--no transponders or costly and fickle GPS trackers--just a QR code in the right spot behind the windshield.  Flexibility of payment (for tolls) furthers the city's mission to be accessible to all.
 
 > NOTE:
 >
-> Not displaying a QR would be equivalent to not having a license plate: a much larger and riskier transgression.
+> Cars not havng a public Ethereum address (displaying a QR code) would be equivalent to not having a license plate: a costlier and riskier transgression.
+>
+> Reporting of non Ethereum address bearing cars would be an extension of the workflows discussed here.  For simplicity, the extention is out of scope for this developer demo.
 
 The car's location is not easily trackable with the toll-system.  The driver's identity is not trackable with the toll-system.  The toll-system is focused on tolls and cannot be accused otherwise and displease privacy advocates.  
 
@@ -228,7 +230,7 @@ If a bounty hunt was successful--i.e. the car had lapsed toll payment--the last 
 
 Beside a race condition in this simplistic dispatching mechanism, another way to avoid a ticket for violating toll-payment is to click another destination in the city and run away before the enforcement officer arrives.
 
-Note that if the car runs away from a location before the enforcement officer arrives, not only does the citizen bounty hunter miss out on the reward from the ticket, the bounty hunter gives up their staked ethers for their mis-reporting: bounty hunters stake some ether when reporting a car.  As such, the citizen bounty hunter must be somewhat confident the car will stay where it is for some time.  The time is not unbounded; it's 30 seconds in the simulation.  In the real world this would be location dependent, but enforcement officers on bike or foot should be able to get to reports on the order of minutes and ticket cars in a matter of seconds ().
+Note that if the car runs away from a location before the enforcement officer arrives, not only does the citizen bounty hunter miss out on the reward from the ticket, the bounty hunter gives up their staked ethers for their mis-reporting: bounty hunters stake some ether when reporting a car.  As such, the citizen bounty hunter must be somewhat confident the car will stay where it is for some time.  The time is not unbounded; it's 30 seconds in the simulation.  In the real world this would be location dependent, but enforcement officers on bike or foot should be able to get to reports on the order of minutes and ticket cars in a matter of seconds.
 
 ## Implementation
 
@@ -244,7 +246,7 @@ The Ethereum contract bringing everything together is in [contract/](contract).
 
 The contract is instantiated by the [azure/logic-apps/toll-enforce-new-admin-form-email.json](azure/logic-apps/toll-enforce-new-admin-form-email.json) Logic App.  There is a [Microsoft Form](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u) which--when ran, re-deploys the contract and configures all new fees schedules for the city.  The details of the new fees schedule and the new Ethereum contract instance address are emailed to the email address specified in the [Microsoft Form](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u).
 
-The configuration points emailed above need to be put into [src/config.json](src/config.json) to take effect:
+The configuration points emailed (as per above) need to be transcribed into [src/config.json](src/config.json) to take effect:
 
 * *admin__FormId*
 * *ethereumContractAddress*
@@ -253,7 +255,7 @@ As such, many different "demo" cities can use the same setup to run the toll col
 
 > NOTE:
 >
-> Running through the form yourself will not interfere with deployed demo:  it's already running as per current deployment: idempotent.
+> Running through the form yourself will not interfere with the deployed demo:  it's already running as per current deployment.
 
 The following figure models the workflows involved in the system:
 
