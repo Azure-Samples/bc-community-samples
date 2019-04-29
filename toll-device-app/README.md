@@ -8,7 +8,7 @@
 > * [City onboarding form](https://forms.office.com/Pages/ResponsePage.aspx?id=3Lt3--vGs02UAOXn9NV_scwAE4PWTPxFg9B_QZcw6HlUODhJNlNKT1VGVElRSlRTMUFCV0NaSDNIMC4u)
 > * [Azure Logic Apps and Functions](azure)
 > * [Ethereum contract](contract)
-> * [overhide.io](https://overhide.io) (used for payment)
+> * [ledger-based authorizations](#ledger-based-authorizations) (used for payment)
 
 > **Quick Start**
 >
