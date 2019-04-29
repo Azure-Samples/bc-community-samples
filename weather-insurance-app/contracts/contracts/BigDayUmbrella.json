@@ -43,6 +43,38 @@
           "Type": {
             "Name": "Oracle"
           }
+        },
+        {
+          "Name": "Lat",
+          "DisplayName": "Latitude",
+          "Description": "The latitude of insurance location",
+          "Type": {
+            "Name": "int"
+          }
+        },
+        {
+          "Name": "Lon",
+          "DisplayName": "Longitude",
+          "Description": "The longitude of insurance location",
+          "Type": {
+            "Name": "int"
+          }
+        },
+        {
+          "Name": "PeriodStart",
+          "DisplayName": "Period start",
+          "Description": "A day and time of the start of insurance period",
+          "Type": {
+            "Name": "time"
+          }
+        },
+        {
+          "Name": "PeriodEnd",
+          "DisplayName": "Period end",
+          "Description": "A day and time of the end of insurance period",
+          "Type": {
+            "Name": "time"
+          }
         }
       ],
       "Constructor": {
@@ -67,8 +99,8 @@
       },
       "Functions": [
         {
-          "Name": "setPolicyLocation",
-          "DisplayName": "Set location",
+          "Name": "submitPolicy",
+          "DisplayName": "Submit policy",
           "Description": "...",
           "Parameters": [
             {
@@ -86,14 +118,7 @@
               "Type": {
                 "Name": "int"
               }
-            }
-          ]
-        },
-        {
-          "Name": "setPolicyTimeframes",
-          "DisplayName": "Set time frame for policy",
-          "Description": "...",
-          "Parameters": [
+            },
             {
               "Name": "start",
               "Description": "Start of issuance period",
@@ -111,12 +136,6 @@
               }
             }
           ]
-        },
-        {
-          "Name": "submitPolicy",
-          "DisplayName": "Submit policy",
-          "Description": "...",
-          "Parameters": []
         },
         {
           "Name": "setPolicyMeasuredValue",
@@ -207,22 +226,6 @@
               "Function": "setPolicyMeasuredValue",
               "NextStates": [ "Initial" ],
               "DisplayName": "Set measured condition to policy"
-            },
-            {
-              "AllowedRoles": ["Insurant"],
-              "AllowedInstanceRoles": [],
-              "Description": "...",
-              "Function": "setPolicyTimeframes",
-              "NextStates": [ "Initial" ],
-              "DisplayName": "Set time condition to policy"
-            },
-            {
-              "AllowedRoles": ["Insurant"],
-              "AllowedInstanceRoles": [],
-              "Description": "...",
-              "Function": "setPolicyLocation",
-              "NextStates": [ "Initial" ],
-              "DisplayName": "Set location condition to policy"
             }
           ]
         },

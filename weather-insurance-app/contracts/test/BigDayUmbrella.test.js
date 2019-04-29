@@ -49,45 +49,21 @@ contract('BigDayUmbrella', async (accounts) => {
             app = await BigDayUmbrella.new(oracle, insurant);
         });
 
-        it('can set location for policy', async () => {
-            await app.setPolicyLocation(
-                new BigNumber(policy.location.lat * (10 ** 7)), 
-                new BigNumber(policy.location.lon * (10 ** 7)), 
-                {from: insurant}).should.be.fulfilled;
-            
-            const currentLocation = await app.getPolicyLocation();
-            currentLocation[0].should.be.bignumber.equal(policy.location.lat * (10 ** 7))
-            currentLocation[1].should.be.bignumber.equal(policy.location.lon * (10 ** 7))
-        });
-
-        it('can set timeframes for policy', async () => {
-            await app.setPolicyTimeframes(
-                new BigNumber(policy.period.start), 
-                new BigNumber(policy.period.end), 
-                {from: insurant}).should.be.fulfilled;
-            const currentTimeframes = await app.getPolicyTimeframes();
-            currentTimeframes[0].should.be.bignumber.equal(policy.period.start);
-            currentTimeframes[1].should.be.bignumber.equal(policy.period.end);
-        });
-
         it('oracle cannot update policy', async () => {
-            await app.setPolicyLocation(new BigNumber(1), new BigNumber(1), {from: oracle}).should.be.rejected;
+            await app.setPolicyMeasuredValue(Temperature, 
+                new BigNumber(15), new BigNumber(30),
+                {from: oracle}).should.be.rejected;
         });
 
         it('can submit policy', async () => {
-            await app.setPolicyLocation(
-                new BigNumber(policy.location.lat * (10 ** 7)), 
-                new BigNumber(policy.location.lon * (10 ** 7)), 
-                {from: insurant}).should.be.fulfilled;
-
-            await app.setPolicyTimeframes(
-                new BigNumber(policy.period.start), 
-                new BigNumber(policy.period.end), 
-                {from: insurant}).should.be.fulfilled;
-
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
 
-            const {logs} = await app.submitPolicy({from: insurant}).should.be.fulfilled;
+            const {logs} = await app.submitPolicy(
+                new BigNumber(policy.location.lat * (10 ** 7)),
+                new BigNumber(policy.location.lon * (10 ** 7)),
+                new BigNumber(policy.period.start), 
+                new BigNumber(policy.period.end),
+                {from: insurant}).should.be.fulfilled;
             logs[0].event.should.be.equal('PolicySubmitted');
             logs[0].args.should.be.deep.equal({
                 lat: new BigNumber(policy.location.lat * (10 ** 7)),
@@ -99,41 +75,33 @@ contract('BigDayUmbrella', async (accounts) => {
             (await app.State()).should.be.bignumber.equal(1);
         });
 
-        it('cannot submit policy until weather conditions, time frames and location is not specified', async () => {
-            await app.submitPolicy({from: insurant}).should.be.rejected;
-
-            await app.setPolicyLocation(
-                new BigNumber(policy.location.lat * (10 ** 7)), 
-                new BigNumber(policy.location.lon * (10 ** 7)), 
-                {from: insurant}).should.be.fulfilled;
-            await app.submitPolicy({from: insurant}).should.be.rejected;
-
-            await app.setPolicyTimeframes(
-                new BigNumber(policy.period.start), 
-                new BigNumber(policy.period.end), 
-                {from: insurant}).should.be.fulfilled;
-            await app.submitPolicy({from: insurant}).should.be.rejected;
-        });
-
         it('cannot submit policy by oracle', async () => {
-            await app.submitPolicy({from: oracle}).should.be.rejected;
+            await app.setPolicyMeasuredValue(Temperature, 
+                new BigNumber(15), new BigNumber(30),
+                {from: insurant}).should.be.fulfilled;
+            await app.submitPolicy(
+                new BigNumber(policy.location.lat * (10 ** 7)),
+                new BigNumber(policy.location.lon * (10 ** 7)),
+                new BigNumber(policy.period.start), 
+                new BigNumber(policy.period.end),
+                {from: oracle}
+            ).should.be.rejected;
         });
 
         it('cannot submit policy two times', async () => {
-            await app.setPolicyLocation(
-                new BigNumber(policy.location.lat * (10 ** 7)), 
-                new BigNumber(policy.location.lon * (10 ** 7)), 
-                {from: insurant}).should.be.fulfilled;
-
-            await app.setPolicyTimeframes(
-                new BigNumber(policy.period.start), 
-                new BigNumber(policy.period.end), 
-                {from: insurant}).should.be.fulfilled;
-
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
-
-            await app.submitPolicy({from: insurant}).should.be.fulfilled;
-            await app.submitPolicy({from: insurant}).should.be.rejected;
+            await app.submitPolicy(new BigNumber(policy.location.lat * (10 ** 7)),
+                new BigNumber(policy.location.lon * (10 ** 7)),
+                new BigNumber(policy.period.start), 
+                new BigNumber(policy.period.end),
+                {from: insurant}
+            ).should.be.fulfilled;
+            await app.submitPolicy(new BigNumber(policy.location.lat * (10 ** 7)),
+                new BigNumber(policy.location.lon * (10 ** 7)),
+                new BigNumber(policy.period.start), 
+                new BigNumber(policy.period.end),
+                {from: insurant}
+            ).should.be.rejected;
         });
 
         it('can update measured value in policy', async () => {
@@ -155,18 +123,16 @@ contract('BigDayUmbrella', async (accounts) => {
         let app;
         beforeEach(async () => {
             app = await BigDayUmbrella.new(oracle, insurant);
-            await app.setPolicyLocation(
-                new BigNumber(policy.location.lat * (10 ** 7)), 
-                new BigNumber(policy.location.lon * (10 ** 7)), 
-                {from: insurant}).should.be.fulfilled;
-            await app.setPolicyTimeframes(
-                new BigNumber(policy.period.start), 
-                new BigNumber(policy.period.end), 
-                {from: insurant}).should.be.fulfilled;
             await app.setPolicyMeasuredValue(Temperature, 
                 new BigNumber(15), new BigNumber(30),
                 {from: insurant}).should.be.fulfilled;
-            await app.submitPolicy({from: insurant});
+            await app.submitPolicy(
+                new BigNumber(policy.location.lat * (10 ** 7)),
+                new BigNumber(policy.location.lon * (10 ** 7)),
+                new BigNumber(policy.period.start), 
+                new BigNumber(policy.period.end),
+                {from: insurant}
+            );
         });
 
         it('should update temperature without fulfilling issue claim', async () => {
