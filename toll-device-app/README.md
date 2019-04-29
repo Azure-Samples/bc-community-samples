@@ -287,6 +287,12 @@ The two API calls on [overhide-ledger's](https://test.ohledger.com) test instanc
 
 ### Login Page
 
+The *Car Top-Up App*--which fully resides in the [src/lib/CarPanel.jsx](src/lib/CarPanel.jsx) React component--is the login page.
+
+It's use of the `oh$` import from [ledgers.js](https://www.npmjs.com/package/ledgers.js) are all the integration points from presenting *ledger-based authorizations* to the user.
+
+A quick overview of the login-page [ledgers.js](https://www.npmjs.com/package/ledgers.js) is available in [this video](https://www.youtube.com/watch?v=-uI806gNnFg).
+
 ### Read More
 
 Please visit [overhide.io](https://overhide.io) and [overhide-ledger](https://ohledger.com) for more.
