@@ -158,9 +158,9 @@ The drivers benefit by not having to register their cars--having to deal with an
 
 > NOTE:
 >
-> Cars not havng a public Ethereum address (displaying a QR code) would be equivalent to not having a license plate: a costlier and riskier transgression.
+> Cars not having a public Ethereum address (displaying a QR code) would be equivalent to not having a license plate: a costlier and riskier transgression.
 >
-> Reporting of non Ethereum address bearing cars would be an extension of the workflows discussed here.  For simplicity, the extention is out of scope for this developer demo.
+> Reporting of non-address bearing cars would be an extension of the workflows discussed here.  For simplicity, such an extention is out of scope for this developer demo.
 
 The car's location is not easily trackable with the toll-system.  The driver's identity is not trackable with the toll-system.  The toll-system is focused on tolls and cannot be accused otherwise and displease privacy advocates.  
 
