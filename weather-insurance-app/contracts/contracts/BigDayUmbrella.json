@@ -45,19 +45,11 @@
           }
         },
         {
-          "Name": "Lat",
-          "DisplayName": "Latitude",
-          "Description": "The latitude of insurance location",
+          "Name": "Location",
+          "DisplayName": "Location",
+          "Description": "The location",
           "Type": {
-            "Name": "int"
-          }
-        },
-        {
-          "Name": "Lon",
-          "DisplayName": "Longitude",
-          "Description": "The longitude of insurance location",
-          "Type": {
-            "Name": "int"
+            "Name": "string"
           }
         },
         {
@@ -104,19 +96,11 @@
           "Description": "...",
           "Parameters": [
             {
-              "Name": "lat",
-              "Description": "latitude",
-              "DisplayName": "Latitude",
+              "Name": "location",
+              "Description": "location",
+              "DisplayName": "Location",
               "Type": {
-                "Name": "int"
-              }
-            },
-            {
-              "Name": "lon",
-              "Description": "longitude",
-              "DisplayName": "Longitude",
-              "Type": {
-                "Name": "int"
+                "Name": "string"
               }
             },
             {

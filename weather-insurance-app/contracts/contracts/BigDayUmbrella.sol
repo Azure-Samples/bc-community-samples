@@ -5,19 +5,18 @@ contract BigDayUmbrella {
     // Events
     event IssueClaim(address insurant, string reason);
     event DeclineClaim(address insurant);
-    event PolicySubmitted(int lat, int lon, uint periodStart, uint periodEnd, address insurant);
+    event PolicySubmitted(string location, uint periodStart, uint periodEnd, address insurant);
 
     struct measure {
-        uint256 Min;
-        uint256 Max;
+        int Min;
+        int Max;
         bool IsSet;
     }
 
     enum weatherConditions { Thunderstorm, RainSnow, Sleet, Icy, Showers, Rain, Flurries, Snow, Dust, Fog, Haze, Windy, Cloudy, MostlyCloudy, Sunny, MostlySunny, Hot, ChanceOfTStorm, ChanceOfRain, ChanceOfSnow }
     enum measuredConditions { Temperature, WindSpeed, WindGustSpeed, UVIndex, Pressure, Humidity }
 
-    int256 public Lat;
-    int256 public Lon;
+    string public Location;
     uint256 public PeriodStart;
     uint256 public PeriodEnd;
     weatherConditions[] public AllowedConditions;
@@ -46,19 +45,14 @@ contract BigDayUmbrella {
         _;
     }
 
-    function submitPolicy(int256 lat, int256 lon, uint256 start, uint256 end) public canChangePolicy {
+    function submitPolicy(string location, uint256 start, uint256 end) public canChangePolicy {
 
         require(end > start);
         require(start > now);
-        require(start > 0);
-        
-        // Lat: [-85.05115, 85.05115] 
-        require(lat >= -850511500 && lat <= 850511500);
-        // Lon: [-180, 180] 
-        require(lon >= -1800000000 && lon <= 1800000000);
+        require(start > 0);        
+        require(bytes(location).length > 0);
 
-        Lat = lat;
-        Lon = lon;
+        Location = location;
         PeriodStart = start;
         PeriodEnd = end;
 
@@ -73,10 +67,10 @@ contract BigDayUmbrella {
         require(AllowedConditions.length > 0);
 
         State = StateType.WaitingWeatherUpdate;
-        emit PolicySubmitted(Lat, Lon, PeriodStart, PeriodEnd, Insurant);
+        emit PolicySubmitted(Location, PeriodStart, PeriodEnd, Insurant);
     }
 
-    function setPolicyMeasuredValue(measuredConditions measureType, uint minValue, uint maxValue) public canChangePolicy {
+    function setPolicyMeasuredValue(measuredConditions measureType, int minValue, int maxValue) public canChangePolicy {
         require(maxValue > minValue);
         require(int(measureType) >= 0);
         require(measureType <= measuredConditions.Humidity);
@@ -84,7 +78,7 @@ contract BigDayUmbrella {
         Measures[uint(measureType)] = measure(minValue, maxValue, true);
     }
 
-    function getPolicyMeasuredValue(measuredConditions measureType) public view returns (uint256 minValue, uint256 maxValue, bool isSet) {
+    function getPolicyMeasuredValue(measuredConditions measureType) public view returns (int minValue, int maxValue, bool isSet) {
         require(int(measureType) >= 0);
         require(measureType <= measuredConditions.Humidity);
 
@@ -111,7 +105,7 @@ contract BigDayUmbrella {
         _;
     }
 
-    function updateMeasuredConditions(measuredConditions measureType, uint value, uint timestamp) public canUpdateConditions {
+    function updateMeasuredConditions(measuredConditions measureType, int value, uint timestamp) public canUpdateConditions {
 
         require(timestamp > PeriodStart);
         

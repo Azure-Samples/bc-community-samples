@@ -25,10 +25,7 @@ contract('BigDayUmbrella', async (accounts) => {
         ChanceOfRain, ChanceOfSnow ] = Array.from(Array(20).keys());
 
     const policy = {
-        location: {
-            lat: 50.4637582,
-            lon: 30.5071673
-        },
+        location: 'Ukraine, Kyiv',
         period: {
             start: new Date().getTime(),
             end: new Date().getTime() + 24 * 60 * 60 * 100
@@ -66,15 +63,13 @@ contract('BigDayUmbrella', async (accounts) => {
             await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
 
             const {logs} = await app.submitPolicy(
-                new BigNumber(policy.location.lat * (10 ** 7)),
-                new BigNumber(policy.location.lon * (10 ** 7)),
+                policy.location,
                 new BigNumber(policy.period.start), 
                 new BigNumber(policy.period.end),
                 {from: insurant}).should.be.fulfilled;
             logs[0].event.should.be.equal('PolicySubmitted');
             logs[0].args.should.be.deep.equal({
-                lat: new BigNumber(policy.location.lat * (10 ** 7)),
-                lon: new BigNumber(policy.location.lon * (10 ** 7)),
+                location: policy.location,
                 periodStart: new BigNumber(policy.period.start),
                 periodEnd: new BigNumber(policy.period.end),
                 insurant: insurant
@@ -88,8 +83,7 @@ contract('BigDayUmbrella', async (accounts) => {
                 new BigNumber(15), new BigNumber(30),
                 {from: insurant}).should.be.fulfilled;
             await app.submitPolicy(
-                new BigNumber(policy.location.lat * (10 ** 7)),
-                new BigNumber(policy.location.lon * (10 ** 7)),
+                policy.location,
                 new BigNumber(policy.period.start), 
                 new BigNumber(policy.period.end),
                 {from: oracle}
@@ -99,14 +93,14 @@ contract('BigDayUmbrella', async (accounts) => {
         it('cannot submit policy two times', async () => {
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
             await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
-            await app.submitPolicy(new BigNumber(policy.location.lat * (10 ** 7)),
-                new BigNumber(policy.location.lon * (10 ** 7)),
+            await app.submitPolicy(
+                policy.location,
                 new BigNumber(policy.period.start), 
                 new BigNumber(policy.period.end),
                 {from: insurant}
             ).should.be.fulfilled;
-            await app.submitPolicy(new BigNumber(policy.location.lat * (10 ** 7)),
-                new BigNumber(policy.location.lon * (10 ** 7)),
+            await app.submitPolicy(
+                policy.location,
                 new BigNumber(policy.period.start), 
                 new BigNumber(policy.period.end),
                 {from: insurant}
@@ -142,8 +136,7 @@ contract('BigDayUmbrella', async (accounts) => {
                 new BigNumber(15), new BigNumber(30),
                 {from: insurant}).should.be.fulfilled;
             await app.submitPolicy(
-                new BigNumber(policy.location.lat * (10 ** 7)),
-                new BigNumber(policy.location.lon * (10 ** 7)),
+                policy.location,
                 new BigNumber(policy.period.start), 
                 new BigNumber(policy.period.end),
                 {from: insurant}
