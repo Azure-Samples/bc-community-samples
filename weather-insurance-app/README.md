@@ -41,7 +41,9 @@ Logic app source code is located in [recurrence_weather_update.txt](logic_apps/r
 
 -	Create a blank logic app
 
--	Copy and paste the contntent of [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt) to `Logic app code view`
+-	Open the created app
+
+-	Open `Logic app code view` and paste there the contntent from file: [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt)
 
 - 	Open `Logic app designer` and set your Oracle's email into `UserEmailAddress` variable
 
