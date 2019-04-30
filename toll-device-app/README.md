@@ -94,7 +94,7 @@ With respect to *the car* (driver) the system:
     * needs to be controlled from inside of car but available to the outside
     * car's Ethereum address not tied to the city or any authority: not registered
 * expects a SHA256 of the car's license plate or SHA256 of the car's VIN to be passed into the Ethereum contract 
-    * avoids people using the same address for multipl cars
+    * avoids people using the same address for multiple cars
 * expects that while the car is in a "toll" zone; the displayed Ethereum address has a valid permit in the city's Ethereum smart-contract 
     * a valid paid-permit being a non-expired contract entry for the car's Ethereum address
     * each permit has a limited validity time-period
