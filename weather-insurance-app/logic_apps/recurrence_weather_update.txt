@@ -1,0 +1,633 @@
+{
+    "$connections": {
+        "value": {
+            "msnweather": {
+                "connectionId": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/resourceGroups/blockchain/providers/Microsoft.Web/connections/msnweather",
+                "connectionName": "msnweather",
+                "id": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/providers/Microsoft.Web/locations/eastus/managedApis/msnweather"
+            },
+            "servicebus_1": {
+                "connectionId": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/resourceGroups/blockchain/providers/Microsoft.Web/connections/servicebus-1",
+                "connectionName": "servicebus-1",
+                "id": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/providers/Microsoft.Web/locations/eastus/managedApis/servicebus"
+            },
+            "sql": {
+                "connectionId": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/resourceGroups/blockchain/providers/Microsoft.Web/connections/sql",
+                "connectionName": "sql",
+                "id": "/subscriptions/629ac06b-430f-49e5-bff6-b398a70178ef/providers/Microsoft.Web/locations/eastus/managedApis/sql"
+            }
+        }
+    },
+    "definition": {
+        "$schema": "https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2016-06-01/workflowdefinition.json#",
+        "actions": {
+            "Execute_stored_procedure": {
+                "inputs": {
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[dbo].[GetLatLon]'))}"
+                },
+                "runAfter": {},
+                "type": "ApiConnection"
+            },
+            "For_each_2": {
+                "actions": {
+                    "For_each": {
+                        "actions": {
+                            "Send_message": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_Humidity'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('Humidity'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['rh'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 1,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@variables('RequestId_Humidity')"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_10": {
+                        "actions": {
+                            "Send_message_5": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_Temperature'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_10')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('Temperature'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['temp'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 2,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@variables('RequestId_Temperature')"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_3": {
+                        "actions": {
+                            "Send_message_2": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_Pressure'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_3')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('Pressure'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['baro'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 3,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@variables('RequestId_Pressure')"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_4": {
+                        "actions": {
+                            "Send_message_3": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_UVIndex'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_4')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('UVIndex'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['uv'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 4,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@variables('RequestId_UVIndex')"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_5": {
+                        "actions": {
+                            "Send_message_4": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_WindGustSpeed'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_5')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('WindGustSpeed'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['windGust'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 5,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@{variables('RequestId_WindGustSpeed')}"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_6": {
+                        "actions": {
+                            "Send_message_6": {
+                                "inputs": {
+                                    "body": {
+                                        "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_WindSpeed'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_6')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateMeasuredConditions\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"measureType\",','\n','            \"value\": \"',variables('RequestId_WindSpeed'),'\"','\n','        },','\n','        {','\n','            \"name\": \"value\",','\n','            \"value\": \"',body('Get_current_weather')?['responses']?['weather']?['current']?['windSpd'],'\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 6,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                        "SessionId": "@variables('RequestId_WindSpeed')"
+                                    },
+                                    "host": {
+                                        "connection": {
+                                            "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                        }
+                                    },
+                                    "method": "post",
+                                    "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                },
+                                "runAfter": {},
+                                "type": "ApiConnection"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "Get_current_weather": {
+                        "inputs": {
+                            "host": {
+                                "connection": {
+                                    "name": "@parameters('$connections')['msnweather']['connectionId']"
+                                }
+                            },
+                            "method": "get",
+                            "path": "/current/@{encodeURIComponent(items('For_each_2')?['Location'])}",
+                            "queries": {
+                                "units": "Metric"
+                            }
+                        },
+                        "runAfter": {},
+                        "type": "ApiConnection"
+                    },
+                    "Set_LastUpdatedWeatherTime": {
+                        "inputs": {
+                            "name": "LastUpdatedWeatherTime",
+                            "value": "@body('Get_current_weather')?['responses']?['weather']?['current']?['created']"
+                        },
+                        "runAfter": {
+                            "Get_current_weather": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_Humidity": {
+                        "inputs": {
+                            "name": "RequestId_Humidity",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_Temperature": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_Pressure": {
+                        "inputs": {
+                            "name": "RequestId_Pressure",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_Humidity": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_Temperature": {
+                        "inputs": {
+                            "name": "RequestId_Temperature",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_WeatherTimeStamp": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_UVIndex": {
+                        "inputs": {
+                            "name": "RequestId_UVIndex",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_Pressure": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_WindGustSpeed": {
+                        "inputs": {
+                            "name": "RequestId_WindGustSpeed",
+                            "value": "@guid()"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_WindSpeed": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_WindSpeed": {
+                        "inputs": {
+                            "name": "RequestId_WindSpeed",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_UVIndex": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_WeatherTimeStamp": {
+                        "inputs": {
+                            "name": "WeatherTimeStamp",
+                            "value": "@div(sub(ticks(variables('LastUpdatedWeatherTime')),variables('TicksTo1970')),10000000)"
+                        },
+                        "runAfter": {
+                            "Set_LastUpdatedWeatherTime": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    }
+                },
+                "foreach": "@body('Execute_stored_procedure')?['resultsets']?['Table1']",
+                "runAfter": {
+                    "Initialize_LastUpdatedWeatherTime": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "Foreach"
+            },
+            "Get_chain_identifier_by_user_email": {
+                "inputs": {
+                    "body": {
+                        "UserEmailAddress": "@variables('UserEmailAddress')"
+                    },
+                    "host": {
+                        "connection": {
+                            "name": "@parameters('$connections')['sql']['connectionId']"
+                        }
+                    },
+                    "method": "post",
+                    "path": "/datasets/default/procedures/@{encodeURIComponent(encodeURIComponent('[dbo].[LogicAppGetUserChainIdentifierFromEmailAddress]'))}"
+                },
+                "runAfter": {
+                    "UserEmailAddress": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "ApiConnection"
+            },
+            "Humidity": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Humidity",
+                            "type": "Integer",
+                            "value": 5
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Pressure": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Humidity_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_Humidity",
+                            "type": "String",
+                            "value": "@{guid()}"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Temperature_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Initialize_LastUpdatedWeatherTime": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "LastUpdatedWeatherTime",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "WindGustSpeed_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Pressure": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Pressure",
+                            "type": "Integer",
+                            "value": 4
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "UVIndex": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Pressure_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_Pressure",
+                            "type": "String",
+                            "value": "@guid()"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Humidity_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Temperature": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "Temperature",
+                            "type": "Integer",
+                            "value": 0
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Get_chain_identifier_by_user_email": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Temperature_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_Temperature",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "WeatherTimeStamp": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "TicksTo1970": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "TicksTo1970",
+                            "type": "Integer",
+                            "value": "@ticks('1970-01-01')"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Humidity": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "UVIndex": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "UVIndex",
+                            "type": "Integer",
+                            "value": 3
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "WindGustSpeed": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "UVIndex_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_UVIndex",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Pressure_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "UserEmailAddress": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "UserEmailAddress",
+                            "type": "String",
+                            "value": "kk@4irelabs.com"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Execute_stored_procedure": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WeatherTimeStamp": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "WeatherTimeStamp",
+                            "type": "Integer"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "TicksTo1970": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WindGustSpeed": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "WindGustSpeed",
+                            "type": "Integer",
+                            "value": 2
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "WindSpeed": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WindGustSpeed_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_WindGustSpeed",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "WindSpeed_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WindSpeed": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "WindSpeed",
+                            "type": "Integer",
+                            "value": 1
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Temperature": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WindSpeed_|_RequestId": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_WindSpeed",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "UVIndex_|_RequestId": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            }
+        },
+        "contentVersion": "1.0.0.0",
+        "outputs": {},
+        "parameters": {
+            "$connections": {
+                "defaultValue": {},
+                "type": "Object"
+            }
+        },
+        "triggers": {
+            "Recurrence": {
+                "recurrence": {
+                    "frequency": "Minute",
+                    "interval": 5
+                },
+                "type": "Recurrence"
+            }
+        }
+    }
+}
