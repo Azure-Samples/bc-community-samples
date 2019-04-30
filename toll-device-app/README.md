@@ -15,7 +15,7 @@ You can connect to our private azure hosted ethereum network here: http://40.76.
 
 
 ## What we learned
-I wasnt a fan of private blockchains, until we got a private POA network running on Azure. It was super exiting to see the blocks getting mined and coming in as we were testing and making trasfers. We follows [this]() guide, which had some phrasing issues and small mistakes (I made a pull request with some improvements here). Geth was a lot easier than I thought to get running.
+I wasnt a fan of private blockchains, until we got a private POA network running on Azure. It was super exiting to see the blocks getting mined and coming in as we were testing and making trasfers. We follows [this]() guide, which had some phrasing issues and small mistakes (I made a pull request with some improvements [here](https://github.com/caleteeter/smartcontractdev/pull/2)). Geth was a lot easier than I thought to get running.
 
 One of the biggest challenges I've struggled with as a blockchain engineer is making sure pick up all events off chain, so user experiences can be consistent and they dont need to know they are really using a blockchain.  So we decided to use Azure's Logic Apps to pick up all the payment request and payment success/failure messages, to connect to our user app.
 
