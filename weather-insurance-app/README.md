@@ -63,6 +63,8 @@ Logic app workflow:
 
 -	Store the conditions to the appropriate smart-contract with help of Service Bus (Send Message) and Messaging API
 
+All the weather conditions are sent as parallel requests.
+
 Application files
 --
 

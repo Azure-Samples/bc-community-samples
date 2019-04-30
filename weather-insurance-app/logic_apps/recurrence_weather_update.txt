@@ -58,7 +58,7 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -86,7 +86,7 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -114,7 +114,7 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -142,7 +142,7 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -170,7 +170,7 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -198,7 +198,53 @@
                         },
                         "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
                         "runAfter": {
-                            "Set_RequestId_WindGustSpeed": [
+                            "Set_RequestId_WeatherCondition": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Foreach"
+                    },
+                    "For_each_7": {
+                        "actions": {
+                            "Condition": {
+                                "actions": {
+                                    "Send_message_7": {
+                                        "inputs": {
+                                            "body": {
+                                                "ContentData": "@{base64(concat('{','\n','    \"requestId\": \"',variables('RequestId_WeatherContition'),'\",','\n','    \"userChainIdentifier\": \"',items('For_each_7')?['ChainIdentifier'],'\",','\n','    \"contractLedgerIdentifier\": \"',items('For_each_2')?['LEDGERIDENTIFIER'],'\",','\n','    \"workflowFunctionName\": \"updateWeather\",','\n','    \"parameters\": [','\n','        {','\n','            \"name\": \"weather\",','\n','            \"value\": \"\"','\n','        },','\n','        {','\n','            \"name\": \"timestamp\",','\n','            \"value\": \"',variables('WeatherTimeStamp'),'\"','\n','        }','\n','    ],','\n','    \"connectionId\": 7,','\n','    \"version\": \"1.0\",','\n','    \"messageSchemaVersion\": \"1.0.0\",','\n','    \"messageName\": \"CreateContractActionRequest\"','\n','}'))}",
+                                                "SessionId": "@variables('RequestId_WeatherContition')"
+                                            },
+                                            "host": {
+                                                "connection": {
+                                                    "name": "@parameters('$connections')['servicebus_1']['connectionId']"
+                                                }
+                                            },
+                                            "method": "post",
+                                            "path": "/@{encodeURIComponent(encodeURIComponent('ingressqueue'))}/messages"
+                                        },
+                                        "runAfter": {},
+                                        "type": "ApiConnection"
+                                    }
+                                },
+                                "expression": {
+                                    "and": [
+                                        {
+                                            "not": {
+                                                "equals": [
+                                                    "@variables('WeatherCondition')",
+                                                    -1
+                                                ]
+                                            }
+                                        }
+                                    ]
+                                },
+                                "runAfter": {},
+                                "type": "If"
+                            }
+                        },
+                        "foreach": "@body('Get_chain_identifier_by_user_email')?['resultsets']?['Table1']",
+                        "runAfter": {
+                            "Set_RequestId_WeatherCondition": [
                                 "Succeeded"
                             ]
                         },
@@ -262,7 +308,7 @@
                             "value": "@{guid()}"
                         },
                         "runAfter": {
-                            "Set_WeatherTimeStamp": [
+                            "Switch": [
                                 "Succeeded"
                             ]
                         },
@@ -275,6 +321,18 @@
                         },
                         "runAfter": {
                             "Set_RequestId_Pressure": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "SetVariable"
+                    },
+                    "Set_RequestId_WeatherCondition": {
+                        "inputs": {
+                            "name": "RequestId_WeatherContition",
+                            "value": "@{guid()}"
+                        },
+                        "runAfter": {
+                            "Set_RequestId_WindGustSpeed": [
                                 "Succeeded"
                             ]
                         },
@@ -315,6 +373,280 @@
                             ]
                         },
                         "type": "SetVariable"
+                    },
+                    "Switch": {
+                        "cases": {
+                            "Case": {
+                                "actions": {
+                                    "Set_variable": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 0
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Thunderstorm"
+                            },
+                            "Case_10": {
+                                "actions": {
+                                    "Set_variable_10": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 9
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Fog"
+                            },
+                            "Case_11": {
+                                "actions": {
+                                    "Set_variable_11": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 10
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Haze"
+                            },
+                            "Case_12": {
+                                "actions": {
+                                    "Set_variable_12": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 11
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Windy"
+                            },
+                            "Case_13": {
+                                "actions": {
+                                    "Set_variable_13": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 12
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Cloudy"
+                            },
+                            "Case_14": {
+                                "actions": {
+                                    "Set_variable_14": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 13
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Mostly Cloudy"
+                            },
+                            "Case_15": {
+                                "actions": {
+                                    "Set_variable_15": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 14
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Sunny"
+                            },
+                            "Case_16": {
+                                "actions": {
+                                    "Set_variable_16": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 15
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Mostly Sunny"
+                            },
+                            "Case_17": {
+                                "actions": {
+                                    "Set_variable_17": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 16
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Hot"
+                            },
+                            "Case_18": {
+                                "actions": {
+                                    "Set_variable_18": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 17
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Chance Of Storm"
+                            },
+                            "Case_19": {
+                                "actions": {
+                                    "Set_variable_19": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 18
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Chance Of Rain"
+                            },
+                            "Case_2": {
+                                "actions": {
+                                    "Set_variable_2": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 1
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Rain Snow"
+                            },
+                            "Case_20": {
+                                "actions": {
+                                    "Set_variable_20": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 19
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Chance Of Snow"
+                            },
+                            "Case_3": {
+                                "actions": {
+                                    "Set_variable_3": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 2
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Sleet"
+                            },
+                            "Case_4": {
+                                "actions": {
+                                    "Set_variable_4": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 3
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Icy"
+                            },
+                            "Case_5": {
+                                "actions": {
+                                    "Set_variable_5": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 4
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Showers"
+                            },
+                            "Case_6": {
+                                "actions": {
+                                    "Set_variable_6": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 5
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Rain"
+                            },
+                            "Case_7": {
+                                "actions": {
+                                    "Set_variable_7": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 6
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Flurries"
+                            },
+                            "Case_8": {
+                                "actions": {
+                                    "Set_variable_8": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 7
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Snow"
+                            },
+                            "Case_9": {
+                                "actions": {
+                                    "Set_variable_9": {
+                                        "inputs": {
+                                            "name": "WeatherCondition",
+                                            "value": 8
+                                        },
+                                        "runAfter": {},
+                                        "type": "SetVariable"
+                                    }
+                                },
+                                "case": "Dust"
+                            }
+                        },
+                        "default": {
+                            "actions": {}
+                        },
+                        "expression": "@body('Get_current_weather')?['responses']?['weather']?['current']?['cap']",
+                        "runAfter": {
+                            "Set_WeatherTimeStamp": [
+                                "Succeeded"
+                            ]
+                        },
+                        "type": "Switch"
                     }
                 },
                 "foreach": "@body('Execute_stored_procedure')?['resultsets']?['Table1']",
@@ -384,6 +716,22 @@
                     "variables": [
                         {
                             "name": "LastUpdatedWeatherTime",
+                            "type": "String"
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Initialize_variable": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "Initialize_variable": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "RequestId_WeatherContition",
                             "type": "String"
                         }
                     ]
@@ -473,7 +821,7 @@
                     ]
                 },
                 "runAfter": {
-                    "Humidity": [
+                    "WeatherCondition": [
                         "Succeeded"
                     ]
                 },
@@ -524,6 +872,23 @@
                 },
                 "runAfter": {
                     "Execute_stored_procedure": [
+                        "Succeeded"
+                    ]
+                },
+                "type": "InitializeVariable"
+            },
+            "WeatherCondition": {
+                "inputs": {
+                    "variables": [
+                        {
+                            "name": "WeatherCondition",
+                            "type": "Integer",
+                            "value": -1
+                        }
+                    ]
+                },
+                "runAfter": {
+                    "Humidity": [
                         "Succeeded"
                     ]
                 },
