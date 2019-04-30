@@ -37,7 +37,29 @@ If weather submitted by oracle will violate created policy - insurance claim is 
 Creation of logic app
 --
 
-TODO: Bohdan will describe
+Logic app source code is located in `logic_apps/recurrence_weather_update.sql` file. To setup the application you should:
+
+-	Create a blank logic app
+
+-	Copy and paste the contntent of `logic_apps/recurrence_weather_update.sql` to `Logic app code view`
+
+- 	Open `Logic app designer` and set your Oracle's email into `UserEmailAddress` variable
+
+-	Save the changeges
+
+
+Logic app workflow:
+--
+
+-	The app runs the flow every 5 minute by first recurrence step
+
+-	The app retrieves Oracle's ledgerIdentifier from which the app updates the weather info in the smart-contract
+
+-	Runs sql procedure to retrieve all smart-contracts and their details where state equal: "WaitingWeatherUpdate"
+
+-	Retrieve the weather conditions from MSN for each location that stored in the smart-contracts from previos step
+
+-	Store the conditions to the appropriate smart-contract with help of Service Bus (Send Message) and Messaging API
 
 Application files
 --
@@ -45,3 +67,4 @@ Application files
 1. [BigDayUmbrella.json](contracts/contracts/BigDayUmbrella.json)
 2. [BigDayUmbrella.sol](contracts/contracts/BigDayUmbrella.sol)
 3. [query.sql](sql/query.sql)
+4. [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.sql)
