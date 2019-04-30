@@ -1,0 +1,64 @@
+<!-- This is a static file -->
+<!-- served from your routes in server.js -->
+
+<!-- You might want to try something fancier: -->
+<!-- html/nunjucks docs: https://mozilla.github.io/nunjucks/ -->
+<!-- pug: https://pugjs.org/ -->
+<!-- haml: http://haml.info/ -->
+<!-- hbs(handlebars): http://handlebarsjs.com/ -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>TollBooth</title>
+    <meta name="description" content="Scan a car's tag to get started">
+    <link id="favicon" rel="icon" href="https://glitch.com/edit/favicon-app.ico" type="image/x-icon">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- import the webpage's stylesheet -->
+    <link rel="stylesheet" href="/style.css">
+    
+    <!-- import the webpage's client-side javascript file -->
+    <script src="/abi.js"></script>
+    <script src="/tollbooth.js" defer></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/gh/ethereum/web3.js@1.0.0-beta.34/dist/web3.min.js">  </script>
+    <script src="/web3.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>
+        Enter the car's License Plate
+      </h1>
+    </header>
+
+    <main>
+
+      
+      <form>
+        <label>Plate:</label>
+        <input name="plate" type="text" maxlength="100" placeholder="abc-123" aria-labelledby="submit-plate">
+        <label>Booth number:</label>
+        <input name="boothNumber" type="text" maxlength="100" placeholder="2" aria-labelledby="submit-plate">
+        <label>Toll amount ($):</label>
+        <input name="tollValue" type="text" maxlength="100" placeholder="5" aria-labelledby="submit-plate">
+        <button type="submit" id="submit-plate">Submit Plate</button>
+      </form>
+      
+      <section class="plates">
+        <ul id="plates"></ul>
+      </section>
+    </main>
+
+    <footer>
+      Made by <a href="http://twitter.com/pi0neerpat">Patrick</a> and <a href="http://twitter.com/cupojoseph">Joseph</a>!
+    </footer>
+
+    <!-- include the Glitch button to show what the webpage is about and
+          to make it easier for folks to view source and remix -->
+    <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
+    <script src="https://button.glitch.me/button.js"></script>
+
+  </body>
+</html>
