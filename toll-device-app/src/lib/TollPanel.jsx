@@ -51,6 +51,7 @@ class TollPanel extends React.Component {
       await new Promise((resolve, reject) => {
         contract.methods.doReport(
           this.props.carAddress, 
+          this.props.plateHash,
           this.props.hunterCoordsX, 
           this.props.hunterCoordsY, 
           zoneToIndexMap[this.props.hunterCoordsZone])

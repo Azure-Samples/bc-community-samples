@@ -39,7 +39,8 @@
     "webpack-cli": "^3.3.1"
   },
   "dependencies": {
-    "ledgers.js": "github:overhide/ledgers.js",
-    "web3-eth-accounts": "1.0.0-beta.52"
+    "ledgers.js": "1.1.1",
+    "web3-eth-accounts": "1.0.0-beta.53",
+    "web3-utils": "1.0.0-beta.53"
   }
 }

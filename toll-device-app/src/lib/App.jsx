@@ -18,6 +18,7 @@ class App extends React.Component {
       hint: null,
       atCar: false,
       carAddress: null,
+      plateHash: null,
       carCoordsX: null,
       carCoordsY: null,
       carCoordsZone: null,
@@ -63,8 +64,8 @@ class App extends React.Component {
     }
   }
 
-  setCarAddress = (address) => {
-    this.setState({carAddress: address});
+  setCarAddress = (address, plateHash) => {
+    this.setState({carAddress: address, plateHash: plateHash});
   };
 
   setAtCar = (flag) => {
@@ -156,6 +157,7 @@ class App extends React.Component {
                     doHint={this.doHint}
                     atCar={this.state.atCar}
                     carAddress={this.state.carAddress}
+                    plateHash={this.state.plateHash}
                     hunterCoordsX={this.state.hunterCoordsX}
                     hunterCoordsY={this.state.hunterCoordsY}
                     hunterCoordsZone={this.state.hunterCoordsZone}/>

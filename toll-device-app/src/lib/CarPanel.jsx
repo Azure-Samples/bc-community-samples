@@ -1,4 +1,4 @@
-import {getNewAccount} from "./utils";
+import {getNewAccount, hash} from "./utils";
 
 import React from "react";
 import CarPanelCheck from "./CarPanelCheck";
@@ -23,10 +23,23 @@ class CarPanel extends React.Component {
 
   // initialize state for car.
   generateCar = () => {
+    function makeLetter() {
+      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+      return characters[Math.floor(Math.random() * characters.length)];
+    }
+
+    function makeNumber() {
+      return Math.floor(Math.random() * 10);
+    }
+
     var account = getNewAccount();
-    this.props.carAddressSetterFn(account.address);
+    var licensePlate = makeLetter() + makeNumber() + makeLetter() + '-' + makeNumber() + makeLetter() + makeNumber();    
+    var plateHash = hash(licensePlate);
+    this.props.carAddressSetterFn(account.address, plateHash);
     return {
       carAddress: account.address, // Car's Ethereum address
+      carLicensePlate: licensePlate,
+      plateHash: plateHash,
       privateKey: account.privateKey // Car's private key
     }
   };
@@ -59,10 +72,18 @@ class CarPanel extends React.Component {
           <div className="row centered">
             <div className="column sixteen wide">
               <div className="ui labeled input fluid">
-                <div className="ui black label">
+                <div className="ui black label" style={{ width: "7.25em" }}>
                   Car Address
                 </div>
                 <input type='text' value={this.state.carAddress} style={{backgroundColor: "#F0F0F0"}} readOnly ></input>              
+              </div>
+            </div>              
+            <div className="column sixteen wide">
+              <div className="ui labeled input fluid">
+                <div className="ui black label" style={{width:"7.25em"}}>
+                  Lic. Plate
+                </div>
+                <input type='text' value={this.state.carLicensePlate} style={{ backgroundColor: "#F0F0F0"}} readOnly ></input>
               </div>
             </div>              
           </div>
@@ -84,6 +105,7 @@ class CarPanel extends React.Component {
               <div className="ui segment">
                 <CarPanelTopUp
                   carAddress={this.state.carAddress}
+                  plateHash={this.state.plateHash}
                   privateKey={this.state.privateKey}
                   setError={this.props.setError}
                   setLoading={this.setLoading}

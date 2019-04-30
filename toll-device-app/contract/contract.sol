@@ -25,6 +25,7 @@ contract TollEnforce {
     mapping (address => uint) public carToZoneATimeoutUnixTime;        // map when zone A permit expires for cars
     mapping (address => uint) public carToZoneBTimeoutUnixTime;        // map when zone B permit expires for cars
     mapping (address => uint) public carToZoneCTimeoutUnixTime;        // map when zone C permit expires for cars
+    mapping (address => bytes32) public carToPlateHash;                // map license plate (sha256) for cars
     address[] public currentCars;                                      // list all cars tracked
     
     event Topup(address forCar, bytes32 byWhom, uint newZoneATimeout, uint newZoneBTimeout, uint newZoneCTimeout);
@@ -43,17 +44,18 @@ contract TollEnforce {
         _;
     }
 
+    // Validate hash for address
+    // 
     // @param who - who signed
     // @param hash - of message: keccak256("\x19Ethereum Signed Message:\n", len(message), message)
     // @param v,r,s - signature tuple
     // @returns [true] if signature hash checks out for address
-    modifier validate(address who, 
+    function validate(address who, 
                       bytes32 hash, 
                       uint8 v, 
                       bytes32 r, 
-                      bytes32 s) {
+                      bytes32 s) public view isOwner {
         require(ecrecover(hash, v, r, s) == who);
-        _;
     }
     
     // setup admin values
@@ -87,19 +89,16 @@ contract TollEnforce {
         return number;
     }      
   
-    // @param forCar - which car the topup is for
+    // @param forCar - which car the topup is for: validated earlier using 'validate' by owner
+    // @param plateHash - hash of license plate
     // @param byWhom - who made the topup payment: sha256 hash with format `<address>@<imparterTag>` where imparterTag is as per ledgers.js
     // @param newZoneTimeoutsBytes - Unix time seconds when zone permits expire forCar:  32 byte hex string first 4 bytes: zonaA, next zoneB, next zoneC
-    // @param carSig* - signature checking values, see 'validate' modifier
     //
     // Note: if this code looks convoluted in places, it's adjustments to avoid 'stack too deep' errors
     function topup(address forCar, 
+                   bytes32 plateHash,
                    bytes32 byWhom, 
-                   bytes32 newZoneTimeoutsBytes, 
-                   bytes32 carSigHash,
-                   uint8 carSigV,
-                   bytes32 carSigR,
-                   bytes32 carSigS) public isOwner validate(forCar, carSigHash, carSigV, carSigR, carSigS) {
+                   bytes32 newZoneTimeoutsBytes) public isOwner {
         uint[] memory newZoneTimeouts = new uint[](3);
         newZoneTimeouts[0] = bytesToUint(split(newZoneTimeoutsBytes, 0));
         newZoneTimeouts[1] = bytesToUint(split(newZoneTimeoutsBytes, 4));
@@ -115,6 +114,7 @@ contract TollEnforce {
         if (carToZoneATimeoutUnixTime[forCar] < newZoneTimeouts[0]) carToZoneATimeoutUnixTime[forCar] = newZoneTimeouts[0];
         if (carToZoneBTimeoutUnixTime[forCar] < newZoneTimeouts[1]) carToZoneBTimeoutUnixTime[forCar] = newZoneTimeouts[1];
         if (carToZoneCTimeoutUnixTime[forCar] < newZoneTimeouts[2]) carToZoneCTimeoutUnixTime[forCar] = newZoneTimeouts[2];
+        carToPlateHash[forCar] = plateHash;
         newZoneTimeouts[0] = carToZoneATimeoutUnixTime[forCar];
         newZoneTimeouts[1] = carToZoneBTimeoutUnixTime[forCar];
         newZoneTimeouts[2] = carToZoneCTimeoutUnixTime[forCar];
@@ -163,19 +163,24 @@ contract TollEnforce {
     // msg.sender == bountyHunter
     // msg.value == stakedValue
     // @param carAddress - being reported
+    // @param plateHash - being checked, if wrong, instant report
     // @param carXCoordinate - of car on map
     // @param carYCoordinate - of car on map
     // @param zoneIndex - 0 for zoneA, 1 for zoneB, 2 for zoneC, zone for coordinates 
     //   if zone mis-reported for coordinates; stakedValue will be lost upon reconciliation
     function doReport(address carAddress, 
+                      bytes32 plateHash,
                       uint carXCoordinate,
                       uint carYCoordinate,
                       uint zoneIndex) public payable {
         require(msg.value >= minStakeValue);
         require(!reports[carAddress].isPending);
-        if (zoneIndex == 0) require(carToZoneATimeoutUnixTime[carAddress] < now);
-        if (zoneIndex == 1) require(carToZoneBTimeoutUnixTime[carAddress] < now);
-        if (zoneIndex == 2) require(carToZoneCTimeoutUnixTime[carAddress] < now);
+        if (carToPlateHash[carAddress] == plateHash) {
+            // if bad plate hash, instant report, let enforcement officer deal with it, ticket regardless of payments
+            if (zoneIndex == 0) require(carToZoneATimeoutUnixTime[carAddress] < now);
+            if (zoneIndex == 1) require(carToZoneBTimeoutUnixTime[carAddress] < now);
+            if (zoneIndex == 2) require(carToZoneCTimeoutUnixTime[carAddress] < now);
+        }
         reports[carAddress] = Report(true, msg.sender, now + bountyTimePeriodSeconds, carXCoordinate, carYCoordinate, msg.value, rewardValue);
         currentReports.push(carAddress);
         emit NewReport(carAddress, carXCoordinate, carYCoordinate, zoneIndex);
@@ -237,6 +242,7 @@ contract TollEnforce {
                 delete carToZoneATimeoutUnixTime[currentCars[i]];
                 delete carToZoneBTimeoutUnixTime[currentCars[i]];
                 delete carToZoneCTimeoutUnixTime[currentCars[i]];
+                delete carToPlateHash[currentCars[i]];
             }
         }
         // by now we removed all expired cars-zone allotments

@@ -179,6 +179,7 @@ class CarPanelTopUp extends React.Component {
           contractAddress: config.ethereumContractAddress
         },
         carAddress: this.props.carAddress,
+        plateHash: this.props.plateHash,
         carSignature: {
           r: carSignature.r,
           s: carSignature.s,

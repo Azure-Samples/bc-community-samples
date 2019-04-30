@@ -2,6 +2,7 @@
  * Utilities to help with all the other components
  */
 import {Accounts} from 'web3-eth-accounts';
+import {keccak256} from 'web3-utils';
 import config from "../config.json";
 
 /** initialization **/
@@ -60,3 +61,11 @@ export function makePretendChallengeAndSign(privateKey) {
 export function delay(t) {
   return new Promise(resolve => setTimeout(resolve.bind(null), t));
 };
+
+/**
+ * @params {string} s - to hash
+ * @returns {string} hash
+ */
+export function hash(s) {
+  return keccak256(s);
+}
