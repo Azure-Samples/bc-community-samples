@@ -17,8 +17,8 @@ States
 
 | Name                      | Description          |
 | :------------------------ | :------------------- |
-| Initial                   | Indicates that Insurant must create policy for insurance claim, by specifing measured conditions, weather conditions, location and time period|
-| WaitingWeatherUpdate      | Indicates that orcale will submit weather updates, when oracle would submit information that violates policy created by insurant, insurance claim will be automatically issued, else after timeframe passed claim will be bedeclined |
+| Initial                   | Indicates that Insurant must create policy for insurance claim, by specifyng measured conditions, weather conditions, location and time period|
+| WaitingWeatherUpdate      | Indicates that oracle will submit weather updates, when oracle would submit information that violates policy created by insurant, insurance claim will be automatically issued, else after timeframe passed claim will be declined |
 | ClaimApproved             | Indicates that claim was approved |
 | ClaimDeclined             | Indicates that claim wasn't approved |
 
@@ -43,11 +43,11 @@ Logic app source code is located in [recurrence_weather_update.txt](logic_apps/r
 
 -	Open the created app
 
--	Open `Logic app code view` and paste there the contntent from file: [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt)
+-	Open `Logic app code view` and paste there the content from file: [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt)
 
 - 	Open `Logic app designer` and set your Oracle's email into `UserEmailAddress` variable
 
--	Save the changeges
+-	Save the changes
 
 
 Logic app workflow:
@@ -59,7 +59,7 @@ Logic app workflow:
 
 -	Runs sql procedure to retrieve all smart-contracts and their details where state equal: "WaitingWeatherUpdate"
 
--	Retrieve the weather conditions from MSN for each location that stored in the smart-contracts from previos step
+-	Retrieve the weather conditions from MSN for each location that stored in the smart-contracts from previus step
 
 -	Store the conditions to the appropriate smart-contract with help of Service Bus (Send Message) and Messaging API
 
