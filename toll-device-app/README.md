@@ -13,6 +13,7 @@ Goals: The goal of this project is to allow payments between devices with a siml
 ## Implementation
 You can connect to our private azure hosted ethereum network here: http://40.76.76.27:8501
 
+You can register your plate and recieve an ERC-721 token using metamask or any web3 browser app here: https://ethereum-toll.glitch.me/tollbooth This webapp also includes payment verification notifications. 
 
 ## What we learned
 I wasnt a fan of private blockchains, until we got a private POA network running on Azure. It was super exiting to see the blocks getting mined and coming in as we were testing and making trasfers. We follows [this]() guide, which had some phrasing issues and small mistakes (I made a pull request with some improvements [here](https://github.com/caleteeter/smartcontractdev/pull/2)). Geth was a lot easier than I thought to get running.
