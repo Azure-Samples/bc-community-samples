@@ -37,11 +37,11 @@ If weather submitted by oracle will violate created policy - insurance claim is 
 Creation of logic app
 --
 
-Logic app source code is located in [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.sql) file. To setup the application you should:
+Logic app source code is located in [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.txt) file. To setup the application you should:
 
 -	Create a blank logic app
 
--	Copy and paste the contntent of [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.sql) to `Logic app code view`
+-	Copy and paste the contntent of [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.txt) to `Logic app code view`
 
 - 	Open `Logic app designer` and set your Oracle's email into `UserEmailAddress` variable
 
@@ -67,4 +67,4 @@ Application files
 1. [BigDayUmbrella.json](contracts/contracts/BigDayUmbrella.json)
 2. [BigDayUmbrella.sol](contracts/contracts/BigDayUmbrella.sol)
 3. [query.sql](sql/query.sql)
-4. [recurrence_weather_update.sql](logic_apps/recurrence_weather_update.sql)
+4. [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt)
