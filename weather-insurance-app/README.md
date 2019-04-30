@@ -2,7 +2,7 @@ Weather insurance App for Azure Blockchain Workbench
 =
 Overview 
 --
-This application allows to insure weather conditions for your special day. You can insure not only weather but some more specific details, like: wind speed, temperature, humidity, etc.
+This application allows ensuring weather conditions for your special day. You can ensure not only the weather but some more specific details, like wind speed, temperature, humidity, etc.
 
 Application Roles
 --
@@ -72,3 +72,12 @@ Application files
 2. [BigDayUmbrella.sol](contracts/contracts/BigDayUmbrella.sol)
 3. [query.sql](sql/query.sql)
 4. [recurrence_weather_update.txt](logic_apps/recurrence_weather_update.txt)
+
+Running tests
+--
+Go to contracts folder using you terminal
+execute next commands
+```bash
+npm install
+npm run test
+```
