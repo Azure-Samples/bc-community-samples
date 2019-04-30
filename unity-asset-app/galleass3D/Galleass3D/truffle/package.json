@@ -1,0 +1,19 @@
+{
+  "name": "prototype93",
+  "version": "1.0.0",
+  "description": "some contracts for a space game prototype",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "1.12.0",
+    "truffle-hdwallet-provider": "^1.0.8"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
