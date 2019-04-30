@@ -200,6 +200,22 @@
               }
             }
           ]
+        },
+        {
+          "Name": "setPolicyAllowedWeather",
+          "DisplayName": "Add weather to policy",
+          "Description": "...",
+          "Parameters": [
+            {
+              "Name": "weather",
+              "Description": "Weather to allow",
+              "DisplayName": "Allowed weather",
+              "Type": {
+                "Name": "enum",
+                "EnumValues": [ "Thunderstorm", "RainSnow", "Sleet", "Icy", "Showers", "Rain", "Flurries", "Snow", "Dust", "Fog", "Haze", "Windy", "Cloudy", "MostlyCloudy", "Sunny", "MostlySunny", "Hot", "ChanceOfTStorm", "ChanceOfRain", "ChanceOfSnow" ]
+              }
+            }
+          ]
         }
       ],
       "States": [
@@ -226,6 +242,14 @@
               "Function": "setPolicyMeasuredValue",
               "NextStates": [ "Initial" ],
               "DisplayName": "Set measured condition to policy"
+            },
+            {
+              "AllowedRoles": ["Insurant"],
+              "AllowedInstanceRoles": [],
+              "Description": "...",
+              "Function": "setPolicyAllowedWeather",
+              "NextStates": [ "Initial" ],
+              "DisplayName": "Set allowed weather to policy"
             }
           ]
         },

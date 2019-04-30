@@ -16,7 +16,13 @@ contract('BigDayUmbrella', async (accounts) => {
         UVIndex,
         Pressure,
         Humidity
-    ] = [0, 1, 2, 3, 4, 5];
+    ] = Array.from(Array(6).keys());
+
+    const [ Thunderstorm, RainSnow, Sleet, Icy, 
+        Showers, Rain, Flurries, Snow, Dust, Fog, 
+        Haze, Windy, Cloudy, MostlyCloudy, 
+        Sunny, MostlySunny, Hot, ChanceOfTStorm, 
+        ChanceOfRain, ChanceOfSnow ] = Array.from(Array(20).keys());
 
     const policy = {
         location: {
@@ -57,6 +63,7 @@ contract('BigDayUmbrella', async (accounts) => {
 
         it('can submit policy', async () => {
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
+            await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
 
             const {logs} = await app.submitPolicy(
                 new BigNumber(policy.location.lat * (10 ** 7)),
@@ -76,6 +83,7 @@ contract('BigDayUmbrella', async (accounts) => {
         });
 
         it('cannot submit policy by oracle', async () => {
+            await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
             await app.setPolicyMeasuredValue(Temperature, 
                 new BigNumber(15), new BigNumber(30),
                 {from: insurant}).should.be.fulfilled;
@@ -90,6 +98,7 @@ contract('BigDayUmbrella', async (accounts) => {
 
         it('cannot submit policy two times', async () => {
             await app.setPolicyMeasuredValue(Temperature, 15, 30, {from: insurant}).should.be.fulfilled;
+            await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
             await app.submitPolicy(new BigNumber(policy.location.lat * (10 ** 7)),
                 new BigNumber(policy.location.lon * (10 ** 7)),
                 new BigNumber(policy.period.start), 
@@ -117,12 +126,18 @@ contract('BigDayUmbrella', async (accounts) => {
             const currentHumidity = await app.getPolicyMeasuredValue(Humidity);
             currentHumidity[2].should.be.equal(false);
         });
+
+        it('should allow add new weather to policy', async () => {
+            await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
+        });
     });
 
     describe("# Update weather conditions", async () => {
         let app;
         beforeEach(async () => {
             app = await BigDayUmbrella.new(oracle, insurant);
+            await app.setPolicyAllowedWeather(Flurries, {from: insurant}).should.be.fulfilled;
+            await app.setPolicyAllowedWeather(Thunderstorm, {from: insurant}).should.be.fulfilled;
             await app.setPolicyMeasuredValue(Temperature, 
                 new BigNumber(15), new BigNumber(30),
                 {from: insurant}).should.be.fulfilled;
@@ -151,8 +166,28 @@ contract('BigDayUmbrella', async (accounts) => {
             (await app.State()).should.be.bignumber.equal(2);
         });
 
+        it('should automatically issue claim when weather changed and violates policy', async () => {
+            const {logs} = await app.updateWeather(Rain, new Date().getTime(), {from: oracle}).should.be.fulfilled;
+
+            logs.length.should.be.equal(1);
+            logs[0].event.should.be.equal('IssueClaim');
+            logs[0].args.should.be.deep.equal({
+                insurant: insurant,
+                reason: 'Weather condition violation'
+            });
+            (await app.State()).should.be.bignumber.equal(2);
+        });
+
         it('won\'t issue claim for measure that wasn\'t set to policy', async () => {
             await app.updateMeasuredConditions(Humidity, 1000, new Date().getTime(), {from: oracle}).should.be.fulfilled;
+            (await app.State()).should.be.bignumber.equal(1);
+        });
+
+        it('won\'t issue claim for weather that was set to policy', async () => {
+            await app.updateWeather(Flurries, new Date().getTime(), {from: oracle}).should.be.fulfilled;
+            (await app.State()).should.be.bignumber.equal(1);
+
+            await app.updateWeather(Thunderstorm, new Date().getTime(), {from: oracle}).should.be.fulfilled;
             (await app.State()).should.be.bignumber.equal(1);
         });
 

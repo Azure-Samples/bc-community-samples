@@ -13,14 +13,14 @@ contract BigDayUmbrella {
         bool IsSet;
     }
 
-    enum weatherConditions { Sunny, Windy, Thunderstorm }
+    enum weatherConditions { Thunderstorm, RainSnow, Sleet, Icy, Showers, Rain, Flurries, Snow, Dust, Fog, Haze, Windy, Cloudy, MostlyCloudy, Sunny, MostlySunny, Hot, ChanceOfTStorm, ChanceOfRain, ChanceOfSnow }
     enum measuredConditions { Temperature, WindSpeed, WindGustSpeed, UVIndex, Pressure, Humidity }
 
     int256 public Lat;
     int256 public Lon;
     uint256 public PeriodStart;
     uint256 public PeriodEnd;
-    weatherConditions[3] public AllowedConditions;
+    weatherConditions[] public AllowedConditions;
     measure[6] public Measures;
 
     // Data structure of state of smart-contract
@@ -68,7 +68,9 @@ contract BigDayUmbrella {
                 isSetMeasures += 1;
             }
         }
+
         require(isSetMeasures > 0);
+        require(AllowedConditions.length > 0);
 
         State = StateType.WaitingWeatherUpdate;
         emit PolicySubmitted(Lat, Lon, PeriodStart, PeriodEnd, Insurant);
@@ -90,6 +92,15 @@ contract BigDayUmbrella {
         minValue = values.Min;
         maxValue = values.Max;
         isSet = values.IsSet;
+    }
+
+    function setPolicyAllowedWeather(weatherConditions weather) public canChangePolicy {
+        for (uint index = 0; index < AllowedConditions.length; index++) {
+            if (AllowedConditions[index] == weather) {
+                return;
+            }
+        }
+        AllowedConditions.push(weather);
     }
 
     // Methods to update weather conditions
@@ -131,6 +142,28 @@ contract BigDayUmbrella {
 
             State = StateType.ClaimApproved;
         }
+    }
+
+    function updateWeather(weatherConditions weather, uint timestamp) public canUpdateConditions {
+        require(timestamp > PeriodStart);
+        
+        if (timestamp > PeriodEnd) {
+            State = StateType.ClaimDeclined;
+            emit DeclineClaim(Insurant);
+            return;
+        }
+
+        require(uint(weather) >= 0);
+        require(uint(weather) <= uint(weatherConditions.ChanceOfSnow));
+
+        for (uint index = 0; index < AllowedConditions.length; index++) {
+            if (AllowedConditions[index] == weather) {
+                return;
+            }
+        }
+        
+        emit IssueClaim(Insurant, "Weather condition violation");
+        State = StateType.ClaimApproved;
     }
     
 }
