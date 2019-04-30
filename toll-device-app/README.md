@@ -93,6 +93,8 @@ With respect to *the car* (driver) the system:
     * alternatively could be some near-field electronic tag on the driver side (picked up by proximity)
     * needs to be controlled from inside of car but available to the outside
     * car's Ethereum address not tied to the city or any authority: not registered
+* expects a SHA256 of the car's license plate or SHA256 of the car's VIN to be passed into the Ethereum contract 
+    * avoids people using the same address for multipl cars
 * expects that while the car is in a "toll" zone; the displayed Ethereum address has a valid permit in the city's Ethereum smart-contract 
     * a valid paid-permit being a non-expired contract entry for the car's Ethereum address
     * each permit has a limited validity time-period
@@ -159,6 +161,8 @@ The drivers benefit by not having to register their cars--having to deal with an
 > NOTE:
 >
 > Cars not having a public Ethereum address (displaying a QR code) would be equivalent to not having a license plate: a costlier and riskier transgression.
+>
+> Cars having a paid-for valid public Ethereum address in the contract; but the address having a mismatched SHA256 of the license plate or a mismatched SHA256 of VIN, would be equivalent to not having a license plate.  This amounts to fraud (criminal offence).
 >
 > Reporting of non-address bearing cars would be an extension of the workflows discussed here.  For simplicity, such an extention is out of scope for this developer demo.
 
