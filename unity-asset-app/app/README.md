@@ -1,76 +1,44 @@
-# Truffle / Ganache
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-1. Run Ganache
+## Available Scripts
 
-1. from root, open command prompt
+In the project directory, you can run:
 
-1. run "npm i"
+### `npm start`
 
-1. Run "truffle migrate --reset" from the root of the project
+Runs the app in the development mode.<br>
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-1. contracts should be deployed:
+The page will reload if you make edits.<br>
+You will also see any lint errors in the console.
 
-- 1 GameStore
-- 4 GameStoreItems
+### `npm test`
 
-4. copy the GameStore address
+Launches the test runner in the interactive watch mode.<br>
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-5. go to browser and configure your local Ganache instance in MetaMask.
+### `npm run build`
 
-- Login as Account 1, and make sure you can switch to Account 2
+Builds the app for production to the `build` folder.<br>
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# React
+The build is minified and the filenames include the hashes.<br>
+Your app is ready to be deployed!
 
-1. open command prompt at the /app folder
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-2. run "npm i"
+### `npm run eject`
 
-3. run "npm run start"
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-4. open browser to the http://localhost:3000
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-5. when you perform some actions, MetaMask will ask you to allow login / approve
+Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-6. Make sure the GameStore Address from the contract is entered, and make sure the Account Address shown is the Ganache Account 1
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-7. All of the Contracts belong to Account 1 originally.
+## Learn More
 
-8. Make an item for sale by giving it a Price. Save the Price above 0 and approve via MetaMask
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-9. Now switch accounts to Account 2 in metamask.
-
-10. Reload the site (possibly the browser)
-
-11. Now you should see some items in ForSale, and all the items in All items.
-
-12. Purchase an Item, and it should move to your item tab
-
-13. Switch accounts and login as Account 1, to see the purchases.
-
-14. Notice Account 1 now has an Amount stored in the GameStore Contract. Acccount 1 can request to transfer the collected funds.
-
-# Unity
-
-The unity project has both a Design time component and Runtime.
-
-1. Start from the 2D tutorial
-
-https://www.youtube.com/watch?v=4cF7Sl7FazE
-
-3. Create a folder at:
-
-- Assets/Resources/1GameStore/BCitems
-
-2. Copy the custom scripts from /unity and put them in the 1GameStore folder
-
-3. From Assets menu choose Assets/Create/GameStore Connection
-
-This will create a connection. Update it with the correct GameStore properties
-
-4. Test the connection.
-
-5. Synchronize the assets. This will create files for each item
-
-6. Add 1GameStore Panel to the scene and configure an item to open it.
-
-7. Purchase items during the game
+To learn React, check out the [React documentation](https://reactjs.org/).
