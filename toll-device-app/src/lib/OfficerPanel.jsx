@@ -11,7 +11,10 @@ class OfficerPanel extends React.Component {
     this.state = {
       message: 'idle',
       loading: false,
-      log: `waiting for car report\n...will come in via Ethereum event\n...we'll read it from Azure.`
+      log: `waiting for car report\n...will come in via Ethereum event\n...we'll read it from Azure.`,
+      previousCar: null,
+      previousX: null,
+      previousY: null
     };
   }
 
@@ -28,7 +31,7 @@ class OfficerPanel extends React.Component {
   }
 
   componentDidMount() {
-    setInterval(this.poll, 5000); // poll for events every 5 seconds
+    setInterval(this.poll, 10000); // poll for events every 10 seconds
   }
 
   /**
@@ -37,7 +40,7 @@ class OfficerPanel extends React.Component {
   poll = async () => {
     this.setState({message: "polling"});
     try {
-      let result = await fetch(config.poll__AzureURL, {
+      let result = await fetch(config.poll__AzureURL.replace('{atCar}', this.props.carAddress.toLowerCase()), {
         method: "GET",
         headers: { "Content-Type": "application/json; charset=utf-8" }
       })
@@ -49,8 +52,13 @@ class OfficerPanel extends React.Component {
         }
       });
       if (result.forCar) {
-        this.ticket(result.forCar, result.carXCoordinate, result.carYCoordinate, result.zoneIndex);
-        this.props.enforcementCoordsSetterFn(result.carXCoordinate, result.carYCoordinate);
+        if (this.state.previousCar != result.forCar 
+            || this.state.previousX != result.carXCoordinate
+            || this.state.previousY != result.carYCoordinate) {
+          this.ticket(result.forCar, result.carXCoordinate, result.carYCoordinate, result.zoneIndex);
+          this.props.enforcementCoordsSetterFn(result.carXCoordinate, result.carYCoordinate);
+        }
+        this.setState({ previousCar: result.forCar, previousX: result.carXCoordinate, previousY: result.carYCoordinate});
       }
     } catch (e) {
       this.props.setError(new String(e));
@@ -66,15 +74,12 @@ class OfficerPanel extends React.Component {
     this.setState({message: "responding"});
     this.log("responding to dispatch, 'toll-enforce-poll' Azure Logic App gave result");
     this.log(`driving to (${reportedX},${reportedY})`);
+    console.log(`checking car: ${this.props.carCoordsX},${this.props.carCoordsY}`);
     setTimeout(
       async () => {
-      if (!this.props.carCoordsX) {
-        this.log(`bad dispatch at (${reportedX},${reportedY})`);
-        this.setState({ message: 'idle' });      
-        return;
-      }
       let zoneIndex = zoneToIndexMap[this.props.carCoordsZone];
-      let isDispatchGood = (this.props.carCoordsX == reportedX
+        let isDispatchGood = (this.props.carCoordsX
+          && this.props.carCoordsX == reportedX
           && this.props.carCoordsY == reportedY
           && zoneIndex == reportedZoneIndex
           && reportedCar.toLowerCase() == this.props.carAddress.toLowerCase());
