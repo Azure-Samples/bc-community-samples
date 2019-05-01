@@ -1,0 +1,335 @@
+{
+  "contractName": "GameCommon",
+  "abi": [],
+  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/unity/poc4/contracts/GameCommon.sol\":\"GameCommon\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/unity/poc4/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]}},\"version\":1}",
+  "bytecode": "0x604c6025600b82828239805160001a6073141515601857fe5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea165627a7a723058209ea3c1b67ded34dacc10d4208efee6d6ef6ea3c3c4ca68f2a9877bb913f32ac30029",
+  "deployedBytecode": "0x73000000000000000000000000000000000000000030146080604052600080fdfea165627a7a723058209ea3c1b67ded34dacc10d4208efee6d6ef6ea3c3c4ca68f2a9877bb913f32ac30029",
+  "sourceMap": "27:167:1:-;;132:2:-1;166:7;155:9;146:7;137:37;255:7;249:14;246:1;241:23;235:4;232:33;225:41;222:2;;;269:9;222:2;293:9;290:1;283:20;323:4;314:7;306:22;347:7;338;331:24",
+  "deployedSourceMap": "27:167:1:-;;;;;;;;",
+  "source": "pragma solidity ^0.5.0;\r\n\r\nlibrary GameCommon {\r\n  enum ItemGameState { NotRegistered, Registered }\r\n\r\n  struct StoreAccount {\r\n    address Owner;\r\n    uint Balance;\r\n    uint TotalSold;\r\n  }\r\n}",
+  "sourcePath": "C:\\dev\\bc\\unity\\poc4\\contracts\\GameCommon.sol",
+  "ast": {
+    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+    "exportedSymbols": {
+      "GameCommon": [
+        137
+      ]
+    },
+    "id": 138,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 126,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 137,
+        "linearizedBaseContracts": [
+          137
+        ],
+        "name": "GameCommon",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "GameCommon.ItemGameState",
+            "id": 129,
+            "members": [
+              {
+                "id": 127,
+                "name": "NotRegistered",
+                "nodeType": "EnumValue",
+                "src": "72:13:1"
+              },
+              {
+                "id": 128,
+                "name": "Registered",
+                "nodeType": "EnumValue",
+                "src": "87:10:1"
+              }
+            ],
+            "name": "ItemGameState",
+            "nodeType": "EnumDefinition",
+            "src": "51:48:1"
+          },
+          {
+            "canonicalName": "GameCommon.StoreAccount",
+            "id": 136,
+            "members": [
+              {
+                "constant": false,
+                "id": 131,
+                "name": "Owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "132:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 130,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "132:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 133,
+                "name": "Balance",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "152:12:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 132,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "152:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 135,
+                "name": "TotalSold",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "171:14:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 134,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "171:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "StoreAccount",
+            "nodeType": "StructDefinition",
+            "scope": 137,
+            "src": "105:86:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 138,
+        "src": "27:167:1"
+      }
+    ],
+    "src": "0:194:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+    "exportedSymbols": {
+      "GameCommon": [
+        137
+      ]
+    },
+    "id": 138,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 126,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "library",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 137,
+        "linearizedBaseContracts": [
+          137
+        ],
+        "name": "GameCommon",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "GameCommon.ItemGameState",
+            "id": 129,
+            "members": [
+              {
+                "id": 127,
+                "name": "NotRegistered",
+                "nodeType": "EnumValue",
+                "src": "72:13:1"
+              },
+              {
+                "id": 128,
+                "name": "Registered",
+                "nodeType": "EnumValue",
+                "src": "87:10:1"
+              }
+            ],
+            "name": "ItemGameState",
+            "nodeType": "EnumDefinition",
+            "src": "51:48:1"
+          },
+          {
+            "canonicalName": "GameCommon.StoreAccount",
+            "id": 136,
+            "members": [
+              {
+                "constant": false,
+                "id": 131,
+                "name": "Owner",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "132:13:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_address",
+                  "typeString": "address"
+                },
+                "typeName": {
+                  "id": 130,
+                  "name": "address",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "132:7:1",
+                  "stateMutability": "nonpayable",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 133,
+                "name": "Balance",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "152:12:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 132,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "152:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 135,
+                "name": "TotalSold",
+                "nodeType": "VariableDeclaration",
+                "scope": 136,
+                "src": "171:14:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 134,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "171:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "StoreAccount",
+            "nodeType": "StructDefinition",
+            "scope": 137,
+            "src": "105:86:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 138,
+        "src": "27:167:1"
+      }
+    ],
+    "src": "0:194:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.5+commit.47a71e8f.Emscripten.clang"
+  },
+  "networks": {
+    "5777": {
+      "events": {},
+      "links": {},
+      "address": "0x44508bf5D34917d8FbA7BbeC2C396C3E4393e354",
+      "transactionHash": "0x1c0cab385cceb2ec49973ec932b75da24d5ef7c7887cd9b00dfcb99b77aa66b8"
+    }
+  },
+  "schemaVersion": "3.0.6",
+  "updatedAt": "2019-04-30T20:41:38.488Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}

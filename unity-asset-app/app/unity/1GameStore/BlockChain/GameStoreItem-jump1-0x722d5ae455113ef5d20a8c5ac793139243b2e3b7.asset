@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bdbce5df12856a4c8caca59b37e6433, type: 3}
+  m_Name: GameStoreItem-jump1-0x722d5ae455113ef5d20a8c5ac793139243b2e3b7
+  m_EditorClassIdentifier: 
+  Address: 0x722d5ae455113ef5d20a8c5ac793139243b2e3b7
+  Price: 100
+  Game: 
+  Owner: 0xa6a95e5b1b83f018a1637f0c047f406d6763b7d3
+  ItemKey: jump1
+  ItemType: ability
+  ItemData: 1.5
+  Multiplier: 1.5
