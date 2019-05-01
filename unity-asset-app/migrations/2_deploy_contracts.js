@@ -3,7 +3,6 @@ const GameCommon = artifacts.require("./GameCommon");
 
 const GameFactoryV1 = artifacts.require("./GameFactoryV1");
 const GameStore = artifacts.require("./GameStore");
-const GamePlayer = artifacts.require("./GamePlayer");
 const GameItem = artifacts.require("./GameItem");
 
 module.exports = function(deployer) {
@@ -21,8 +20,6 @@ async function deploy(deployer) {
   const gameFactory = await deployer.deploy(GameFactoryV1);
   const gameStore = await deployer.deploy(GameStore, gameFactory.address);
 
-  await deployer.link(AddressSet, GamePlayer);
-  await deployer.link(GameCommon, GamePlayer);
   await deployer.link(GameCommon, GameItem);
 
   const result1 = await gameStore.CreateGameItem("jump1", "ability", "1.5");

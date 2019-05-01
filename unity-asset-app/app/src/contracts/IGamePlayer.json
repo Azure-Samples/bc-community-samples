@@ -68,15 +68,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"DiscardItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetGame\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetItems\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"StoreItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/unity/poc4/contracts/GamePlayer.sol\":\"IGamePlayer\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/unity/poc4/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/unity/poc4/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/unity/poc4/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/unity/poc4/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/unity/poc4/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"DiscardItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetGame\",\"outputs\":[{\"name\":\"\",\"type\":\"address\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetItems\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"StoreItem\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol\":\"IGamePlayer\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\nimport { GameCommon } from \"./GameCommon.sol\";\r\nimport { IGameStore } from \"./GameStore.sol\";\r\nimport { IGameItem } from \"./GameItem.sol\";\r\nimport { AddressSet } from \"./AddressSet.sol\";\r\n\r\ninterface IGamePlayer {\r\n  function GetGame() external view returns (IGameStore);\r\n  function GetItems() external view returns (address[] memory);\r\n  function StoreItem(IGameItem gameItem) external returns (bool);\r\n  function DiscardItem(IGameItem gameItem) external returns (bool);\r\n}\r\n\r\ncontract GamePlayer is IGamePlayer {\r\n  using GameCommon for GameCommon.ItemGameState;\r\n\r\n  event PlayerCreated(address gameAddress, address playerAddress, string playerName);\r\n  event ItemStored(address playerAddress, string playerName, address itemAddress);\r\n  event ItemDiscarded(address playerAddress, string playerName, address itemAddress);\r\n\r\n  string public Name;\r\n  IGameStore public Game;\r\n  GameCommon.ItemGameState public GameState;\r\n  AddressSet.Data Items;\r\n\r\n  constructor(string memory name, IGameStore game) public {\r\n    Name = name;\r\n    Game = game;\r\n    emit PlayerCreated(address(game), address(this), name);\r\n  }\r\n\r\n  function GetGame() external view returns (IGameStore) {\r\n    return Game;\r\n  }\r\n\r\n  function GetItems() external view returns (address[] memory) {\r\n    return Items.addresses;\r\n  }\r\n\r\n  function StoreItem(IGameItem gameItem) external returns (bool) {\r\n    (,address owner,,IGameStore itemGameStore,,,) = gameItem.GetProps();\r\n    require(address(itemGameStore) == address(Game), \"Item must belong to the same game\");\r\n    require(address(Game) == msg.sender || owner == msg.sender, \"Must be the owner or the game\");\r\n    (, bool success) = AddressSet.insert(Items, address(gameItem));\r\n    require(success, \"Item was already stored\");\r\n    emit ItemStored(address(this), Name, address(gameItem));\r\n    return true;\r\n  }\r\n\r\n  function DiscardItem(IGameItem gameItem) external returns (bool) {\r\n    (,address owner,,IGameStore itemGameStore,,,) = gameItem.GetProps();\r\n    require(address(itemGameStore) == address(Game), \"Item must belong to the same game\");\r\n    require(address(Game) == msg.sender || owner == msg.sender, \"Must be the owner or the game\");\r\n    require(\r\n      AddressSet.remove(Items, address(gameItem)),\r\n      \"Item was not stored\");\r\n    emit ItemDiscarded(address(this), Name, address(gameItem));\r\n    return true;\r\n  }\r\n\r\n}\r\n",
-  "sourcePath": "C:\\dev\\bc\\unity\\poc4\\contracts\\GamePlayer.sol",
+  "sourcePath": "C:\\dev\\bc\\ds2\\bc-community-samples\\unity-asset-app\\contracts\\GamePlayer.sol",
   "ast": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GamePlayer.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol",
     "exportedSymbols": {
       "GamePlayer": [
         752
@@ -100,7 +100,7 @@
         "src": "0:23:3"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 504,
         "nodeType": "ImportDirective",
@@ -116,7 +116,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
         "file": "./GameStore.sol",
         "id": 506,
         "nodeType": "ImportDirective",
@@ -132,7 +132,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
         "file": "./GameItem.sol",
         "id": 508,
         "nodeType": "ImportDirective",
@@ -148,7 +148,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/AddressSet.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol",
         "file": "./AddressSet.sol",
         "id": 510,
         "nodeType": "ImportDirective",
@@ -1097,7 +1097,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "1123:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -1753,10 +1753,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1477:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -1868,7 +1868,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "1594:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1931,7 +1931,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "1617:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -1998,10 +1998,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1569:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2235,10 +2235,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1737:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2276,7 +2276,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "1811:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -2821,10 +2821,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2018:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2936,7 +2936,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "2135:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -2999,7 +2999,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "2158:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -3066,10 +3066,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2110:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -3252,10 +3252,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2209:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -3293,7 +3293,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "2333:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -3559,7 +3559,7 @@
     "src": "0:2395:3"
   },
   "legacyAST": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GamePlayer.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol",
     "exportedSymbols": {
       "GamePlayer": [
         752
@@ -3583,7 +3583,7 @@
         "src": "0:23:3"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 504,
         "nodeType": "ImportDirective",
@@ -3599,7 +3599,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
         "file": "./GameStore.sol",
         "id": 506,
         "nodeType": "ImportDirective",
@@ -3615,7 +3615,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
         "file": "./GameItem.sol",
         "id": 508,
         "nodeType": "ImportDirective",
@@ -3631,7 +3631,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/AddressSet.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol",
         "file": "./AddressSet.sol",
         "id": 510,
         "nodeType": "ImportDirective",
@@ -4580,7 +4580,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "1123:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -5236,10 +5236,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1477:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5351,7 +5351,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "1594:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -5414,7 +5414,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "1617:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -5481,10 +5481,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1569:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5718,10 +5718,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "1737:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5759,7 +5759,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "1811:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -6304,10 +6304,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2018:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6419,7 +6419,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "2135:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -6482,7 +6482,7 @@
                               "name": "msg",
                               "nodeType": "Identifier",
                               "overloadedDeclarations": [],
-                              "referencedDeclaration": 1568,
+                              "referencedDeclaration": 1551,
                               "src": "2158:3:3",
                               "typeDescriptions": {
                                 "typeIdentifier": "t_magic_message",
@@ -6549,10 +6549,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2110:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6735,10 +6735,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2209:7:3",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6776,7 +6776,7 @@
                             "name": "this",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1588,
+                            "referencedDeclaration": 1571,
                             "src": "2333:4:3",
                             "typeDescriptions": {
                               "typeIdentifier": "t_contract$_GamePlayer_$752",
@@ -7047,7 +7047,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-30T20:41:36.732Z",
+  "updatedAt": "2019-05-01T03:34:11.185Z",
   "devdoc": {
     "methods": {}
   },

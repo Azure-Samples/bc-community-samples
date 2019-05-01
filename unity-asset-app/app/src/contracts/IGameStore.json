@@ -185,15 +185,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"GetMyAccount\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"totalSold\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"itemKey\",\"type\":\"string\"},{\"name\":\"itemType\",\"type\":\"string\"},{\"name\":\"itemData\",\"type\":\"string\"}],\"name\":\"CreateGameItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetAllItems\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"RegisterAccount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"item\",\"type\":\"address\"}],\"name\":\"RegisterMyItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetAllAccounts\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"WithdrawBalance\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"withdrawn\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newGameMaster\",\"type\":\"address\"}],\"name\":\"TransferGameMaster\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"factory\",\"type\":\"address\"}],\"name\":\"SetGameFactory\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"GetAccount\",\"outputs\":[{\"name\":\"exists\",\"type\":\"bool\"},{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"totalSold\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"PurchaseItem\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/unity/poc4/contracts/GameStore.sol\":\"IGameStore\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/unity/poc4/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/unity/poc4/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/unity/poc4/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/unity/poc4/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/unity/poc4/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"GetMyAccount\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"totalSold\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"itemKey\",\"type\":\"string\"},{\"name\":\"itemType\",\"type\":\"string\"},{\"name\":\"itemData\",\"type\":\"string\"}],\"name\":\"CreateGameItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetAllItems\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"RegisterAccount\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"item\",\"type\":\"address\"}],\"name\":\"RegisterMyItem\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[],\"name\":\"GetAllAccounts\",\"outputs\":[{\"name\":\"\",\"type\":\"address[]\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"WithdrawBalance\",\"outputs\":[{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"withdrawn\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newGameMaster\",\"type\":\"address\"}],\"name\":\"TransferGameMaster\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"factory\",\"type\":\"address\"}],\"name\":\"SetGameFactory\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":true,\"inputs\":[{\"name\":\"owner\",\"type\":\"address\"}],\"name\":\"GetAccount\",\"outputs\":[{\"name\":\"exists\",\"type\":\"bool\"},{\"name\":\"balance\",\"type\":\"uint256\"},{\"name\":\"totalSold\",\"type\":\"uint256\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"gameItem\",\"type\":\"address\"}],\"name\":\"PurchaseItem\",\"outputs\":[],\"payable\":true,\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol\":\"IGameStore\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\nimport { GameCommon } from \"./GameCommon.sol\";\r\nimport { IGameItem, GameItem } from \"./GameItem.sol\";\r\nimport { IGamePlayer } from \"./GamePlayer.sol\";\r\nimport { AddressSet } from \"./AddressSet.sol\";\r\n\r\n\r\ninterface IGameFactory {\r\n  function CreateGameItem(IGameStore gameStore, string calldata itemKey, string calldata itemType, string calldata itemData) external\r\n  returns (IGameItem);\r\n}\r\n\r\ncontract GameFactoryV1 is IGameFactory {\r\n  // game master methods\r\n  function CreateGameItem(IGameStore gameStore, string calldata itemKey, string calldata itemType, string calldata itemData) external\r\n  returns (IGameItem)\r\n  {\r\n    return new GameItem(gameStore, itemKey, itemType, itemData);\r\n  }\r\n}\r\n\r\n\r\ninterface IGameStore {\r\n  function TransferGameMaster(address newGameMaster) external;\r\n  function CreateGameItem(string calldata itemKey, string calldata itemType, string calldata itemData) external;\r\n  function SetGameFactory(IGameFactory factory) external;\r\n\r\n  // info methods\r\n  function GetAllItems() external view returns (address[] memory);\r\n  function GetAllAccounts() external view returns (address[] memory);\r\n  function GetAccount(address owner) external view\r\n  returns (bool exists, uint balance, uint totalSold);\r\n\r\n  // account methods\r\n  function RegisterAccount(address owner) external;\r\n  function RegisterMyItem(IGameItem item) external;\r\n  function GetMyAccount() external view returns (uint balance, uint totalSold);\r\n  function PurchaseItem(IGameItem gameItem) external payable;\r\n\r\n  // account holders can withdraw funds for the items sold\r\n  function WithdrawBalance() external returns (uint balance, uint withdrawn);\r\n}\r\n\r\ncontract GameStore is IGameStore {\r\n  using GameCommon for GameCommon.ItemGameState;\r\n\r\n  event NewGameMaster(address gameMaster);\r\n  event GameItemCreated(address item, string itemKey, string itemType);\r\n  event GameItemRegistered(address item);\r\n  event StoreAccountRegistered(address owner);\r\n  event FundsWithdrawn(address owner, uint withdrawnAmount);\r\n  event ItemPurchased(address item, address previousOwner, address newOwner);\r\n\r\n  struct StoreAccount {\r\n    address Owner;\r\n    uint Balance;\r\n    uint TotalSold;\r\n  }\r\n\r\n  address public GameMaster;\r\n  IGameFactory public GameFactory;\r\n\r\n  constructor(IGameFactory gameFactory) public {\r\n    GameFactory = gameFactory;\r\n    GameMaster = msg.sender;\r\n    emit NewGameMaster(msg.sender);\r\n  }\r\n\r\n  AddressSet.Data AllItems;\r\n  AddressSet.Data AllAccounts;\r\n  mapping (address => StoreAccount) AccountsByOwner;\r\n\r\n  // modifiers\r\n  modifier HasStoreAccount() {\r\n    (bool exists,) = _getAccount(msg.sender);\r\n    require(exists, \"Caller must have a store account\");\r\n    _;\r\n  }\r\n  modifier IsGameMaster() {\r\n    require(msg.sender == GameMaster, \"Must be the GameMaster\");\r\n    _;\r\n  }\r\n\r\n  // game master methods\r\n  function CreateGameItem(string calldata itemKey, string calldata itemType, string calldata itemData) external IsGameMaster {\r\n    IGameItem gameItem = GameFactory.CreateGameItem(this, itemKey, itemType, itemData);\r\n    _ensureItem(gameItem);\r\n    gameItem.GameChangeOwner(GameMaster);\r\n    gameItem.GameItemRegistered();\r\n    emit GameItemCreated(address(gameItem), itemKey, itemType);\r\n  }\r\n\r\n  function TransferGameMaster(address newGameMaster) external IsGameMaster {\r\n    GameMaster = newGameMaster;\r\n  }\r\n\r\n  function SetGameFactory(IGameFactory factory) external IsGameMaster {\r\n    GameFactory = factory;\r\n  }\r\n\r\n  // game info methods\r\n\r\n  // get all items registered to this game\r\n  function GetAllItems() external view returns (address[] memory)\r\n  {\r\n    return AllItems.addresses;\r\n  }\r\n\r\n  // get all account owners\r\n  function GetAllAccounts() external view returns (address[] memory)\r\n  {\r\n    return AllAccounts.addresses;\r\n  }\r\n\r\n  // get account details\r\n  function GetAccount(address owner)\r\n    external\r\n    view\r\n    returns (bool exists, uint balance, uint totalSold)\r\n  {\r\n    StoreAccount memory account;\r\n    (exists, account) = _getAccount(owner);\r\n    balance = account.Balance;\r\n    totalSold = account.TotalSold;\r\n  }\r\n\r\n  // account methods\r\n\r\n  // register an account\r\n  function RegisterAccount(address owner) external\r\n  {\r\n    require(!AddressSet.contains(AllAccounts, owner), \"Account already exists\");\r\n    _pushAccountUnsafe(owner);\r\n    emit StoreAccountRegistered(owner);\r\n  }\r\n\r\n  // register a game item with the sender's account\r\n  function RegisterMyItem(IGameItem item) external HasStoreAccount\r\n  {\r\n    bool added = _ensureItem(item);\r\n    require(added, \"Item was already registered\");\r\n    require(item.GameItemRegistered(), \"GameStore could not register the item\");\r\n    emit GameItemRegistered(address(item));\r\n  }\r\n\r\n  // get the sender's account\r\n  function GetMyAccount()\r\n    external\r\n    view\r\n    HasStoreAccount\r\n    returns (uint balance, uint totalSold)\r\n  {\r\n    (,StoreAccount memory account) = _getAccount(msg.sender);\r\n    balance = account.Balance;\r\n    totalSold = account.TotalSold;\r\n  }\r\n\r\n  // purchase an item from another account\r\n  function PurchaseItem(IGameItem gameItem)\r\n    external\r\n    HasStoreAccount\r\n    payable\r\n  {\r\n    (\r\n      GameCommon.ItemGameState itemGameState,\r\n      address oldOwner,\r\n      uint itemPrice,\r\n      IGameStore itemGame,,,\r\n    ) = gameItem.GetProps();\r\n    require(itemPrice > 0, \"Owner has not set a price - cannot be free\");\r\n    require(itemPrice == msg.value, \"Exact amount is required\");\r\n    require(itemGameState == GameCommon.ItemGameState.Registered, \"Item must be marked registered\");\r\n    require(itemGame == this, \"Item must be registered with this game\");\r\n    require(oldOwner != msg.sender, \"Owner cannot purchase self-owned item\");\r\n\r\n    //update the balance on the account\r\n    AccountsByOwner[oldOwner].Balance += msg.value;\r\n    AccountsByOwner[oldOwner].TotalSold += msg.value;\r\n\r\n    //tell the item to change owners\r\n    gameItem.GameChangeOwner(msg.sender);\r\n\r\n    emit ItemPurchased(address(gameItem), oldOwner, msg.sender);\r\n  }\r\n\r\n  //withdraw funds from sold item\r\n  function WithdrawBalance()\r\n    external\r\n    HasStoreAccount\r\n    returns (uint balance, uint withdrawn)\r\n  {\r\n    (bool exists, StoreAccount memory account) = _getAccount(msg.sender);\r\n    require(exists, \"Store account does not exists - nothing to withdraw\");\r\n    balance = account.Balance;\r\n    require(balance > 0, \"Nothing to withdraw\");\r\n    withdrawn = balance;\r\n    AccountsByOwner[msg.sender].Balance = 0;\r\n    AccountsByOwner[msg.sender].TotalSold += balance;\r\n    emit FundsWithdrawn(account.Owner, withdrawn);\r\n    msg.sender.transfer(balance);\r\n  }\r\n\r\n\r\n\r\n  //private read functions\r\n  function _ensureAccount(address owner)\r\n    private\r\n    returns (StoreAccount memory account)\r\n  {\r\n    bool exists;\r\n    (exists, account) = _getAccount(owner);\r\n    if (!exists) {\r\n      bool success;\r\n      (success, account) = _pushAccountUnsafe(owner);\r\n      require(success, \"Failed to store new account\");\r\n    }\r\n  }\r\n\r\n  function _ensureItem(IGameItem item)\r\n    private\r\n    returns (bool added)\r\n  {\r\n    bool exists = AddressSet.contains(AllItems, address(item));\r\n    if (!exists) {\r\n      (, added) = AddressSet.insert(AllItems, address(item));\r\n    }\r\n  }\r\n\r\n  function _getAccount(address owner)\r\n    private\r\n    view\r\n    returns (bool exists, StoreAccount memory account)\r\n  {\r\n    exists = AddressSet.contains(AllAccounts, owner);\r\n    if (exists) {\r\n      account = AccountsByOwner[owner];\r\n    }\r\n  }\r\n\r\n  function _pushAccountUnsafe(address owner)\r\n    private\r\n    returns (bool success, StoreAccount memory account)\r\n  {\r\n    (, success) = AddressSet.insert(AllAccounts, owner);\r\n    account.Owner = owner;\r\n    AccountsByOwner[owner] = account;\r\n  }\r\n}\r\n",
-  "sourcePath": "C:\\dev\\bc\\unity\\poc4\\contracts\\GameStore.sol",
+  "sourcePath": "C:\\dev\\bc\\ds2\\bc-community-samples\\unity-asset-app\\contracts\\GameStore.sol",
   "ast": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
     "exportedSymbols": {
       "GameFactoryV1": [
         802
@@ -223,7 +223,7 @@
         "src": "0:23:4"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 756,
         "nodeType": "ImportDirective",
@@ -239,7 +239,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
         "file": "./GameItem.sol",
         "id": 759,
         "nodeType": "ImportDirective",
@@ -259,7 +259,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GamePlayer.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol",
         "file": "./GamePlayer.sol",
         "id": 761,
         "nodeType": "ImportDirective",
@@ -275,7 +275,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/AddressSet.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol",
         "file": "./AddressSet.sol",
         "id": 763,
         "nodeType": "ImportDirective",
@@ -2310,7 +2310,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "2377:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -2353,7 +2353,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "2413:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2622,7 +2622,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "2632:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2730,10 +2730,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2650:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2807,7 +2807,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2758:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2883,10 +2883,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2750:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2981,7 +2981,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1596,
+                        "referencedDeclaration": 1579,
                         "src": "3033:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_GameStore_$1479",
@@ -4663,10 +4663,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4217:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4996,10 +4996,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4542:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5108,10 +5108,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4594:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5358,7 +5358,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "4925:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -5907,10 +5907,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5322:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5973,7 +5973,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "5418:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -6034,10 +6034,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5397:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6177,10 +6177,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5463:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6241,7 +6241,7 @@
                           "name": "this",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1596,
+                          "referencedDeclaration": 1579,
                           "src": "5585:4:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_GameStore_$1479",
@@ -6288,10 +6288,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5565:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6354,7 +6354,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "5659:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -6415,10 +6415,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5639:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -6517,7 +6517,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "5798:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -6622,7 +6622,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "5853:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -6665,7 +6665,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "5934:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -6815,7 +6815,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6002:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -7036,7 +7036,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6233:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -7144,10 +7144,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "6251:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7322,10 +7322,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "6360:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7430,7 +7430,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "6452:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -7540,7 +7540,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "6498:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -7731,7 +7731,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6589:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -8278,10 +8278,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              1571,
-                              1572
+                              1554,
+                              1555
                             ],
-                            "referencedDeclaration": 1572,
+                            "referencedDeclaration": 1555,
                             "src": "6927:7:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9573,7 +9573,7 @@
     "src": "0:7743:4"
   },
   "legacyAST": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
     "exportedSymbols": {
       "GameFactoryV1": [
         802
@@ -9603,7 +9603,7 @@
         "src": "0:23:4"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 756,
         "nodeType": "ImportDirective",
@@ -9619,7 +9619,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
         "file": "./GameItem.sol",
         "id": 759,
         "nodeType": "ImportDirective",
@@ -9639,7 +9639,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GamePlayer.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol",
         "file": "./GamePlayer.sol",
         "id": 761,
         "nodeType": "ImportDirective",
@@ -9655,7 +9655,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/AddressSet.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol",
         "file": "./AddressSet.sol",
         "id": 763,
         "nodeType": "ImportDirective",
@@ -11690,7 +11690,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "2377:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -11733,7 +11733,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "2413:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -12002,7 +12002,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "2632:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -12110,10 +12110,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2650:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -12187,7 +12187,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2758:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -12263,10 +12263,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2750:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -12361,7 +12361,7 @@
                         "name": "this",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1596,
+                        "referencedDeclaration": 1579,
                         "src": "3033:4:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_contract$_GameStore_$1479",
@@ -14043,10 +14043,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4217:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -14376,10 +14376,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4542:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -14488,10 +14488,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "4594:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -14738,7 +14738,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "4925:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -15287,10 +15287,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5322:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -15353,7 +15353,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "5418:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -15414,10 +15414,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5397:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -15557,10 +15557,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5463:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -15621,7 +15621,7 @@
                           "name": "this",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1596,
+                          "referencedDeclaration": 1579,
                           "src": "5585:4:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_contract$_GameStore_$1479",
@@ -15668,10 +15668,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5565:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -15734,7 +15734,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "5659:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -15795,10 +15795,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "5639:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -15897,7 +15897,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "5798:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -16002,7 +16002,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "5853:3:4",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -16045,7 +16045,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "5934:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -16195,7 +16195,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6002:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -16416,7 +16416,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6233:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -16524,10 +16524,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "6251:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -16702,10 +16702,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "6360:7:4",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -16810,7 +16810,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "6452:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -16920,7 +16920,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "6498:3:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -17111,7 +17111,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "6589:3:4",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -17658,10 +17658,10 @@
                             "name": "require",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [
-                              1571,
-                              1572
+                              1554,
+                              1555
                             ],
-                            "referencedDeclaration": 1572,
+                            "referencedDeclaration": 1555,
                             "src": "6927:7:4",
                             "typeDescriptions": {
                               "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -18958,7 +18958,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-30T20:41:36.819Z",
+  "updatedAt": "2019-05-01T03:34:11.258Z",
   "devdoc": {
     "methods": {}
   },

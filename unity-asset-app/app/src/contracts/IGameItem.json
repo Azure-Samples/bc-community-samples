@@ -96,15 +96,15 @@
       "type": "function"
     }
   ],
-  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"GetProps\",\"outputs\":[{\"name\":\"state\",\"type\":\"uint8\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"game\",\"type\":\"address\"},{\"name\":\"itemKey\",\"type\":\"string\"},{\"name\":\"itemType\",\"type\":\"string\"},{\"name\":\"itemData\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"SetPrice\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"GameChangeOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"GameItemRegistered\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"ChangeOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/unity/poc4/contracts/GameItem.sol\":\"IGameItem\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/unity/poc4/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/unity/poc4/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/unity/poc4/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/unity/poc4/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/unity/poc4/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
+  "metadata": "{\"compiler\":{\"version\":\"0.5.5+commit.47a71e8f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"constant\":true,\"inputs\":[],\"name\":\"GetProps\",\"outputs\":[{\"name\":\"state\",\"type\":\"uint8\"},{\"name\":\"owner\",\"type\":\"address\"},{\"name\":\"price\",\"type\":\"uint256\"},{\"name\":\"game\",\"type\":\"address\"},{\"name\":\"itemKey\",\"type\":\"string\"},{\"name\":\"itemType\",\"type\":\"string\"},{\"name\":\"itemData\",\"type\":\"string\"}],\"payable\":false,\"stateMutability\":\"view\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"price\",\"type\":\"uint256\"}],\"name\":\"SetPrice\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"GameChangeOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[],\"name\":\"GameItemRegistered\",\"outputs\":[{\"name\":\"\",\"type\":\"bool\"}],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"constant\":false,\"inputs\":[{\"name\":\"newOwner\",\"type\":\"address\"}],\"name\":\"ChangeOwner\",\"outputs\":[],\"payable\":false,\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"methods\":{}},\"userdoc\":{\"methods\":{}}},\"settings\":{\"compilationTarget\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol\":\"IGameItem\"},\"evmVersion\":\"byzantium\",\"libraries\":{},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/AddressSet.sol\":{\"keccak256\":\"0xe7f2a2a6f8224fa816075f017e4cffba73ee6d6df9619bcaf108524dc6e27eb6\",\"urls\":[\"bzzr://fa7095f0a0d8ca1a72b032c5c2e00ec91796635c5238e0f7e7cc3af1ec313e68\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol\":{\"keccak256\":\"0x289bcdc2a41138795ac5ac0df57eef370effbe5bf3d4b5d4452d16fd672e97aa\",\"urls\":[\"bzzr://2a3070de9b7b207272d54f76fa2bb9150f4530b80cded481399e3d5fd8b3f1b9\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol\":{\"keccak256\":\"0x73c6ade43451f20c57756c1a442d6d9b4ef6d534a1e9994780625733e8fb840b\",\"urls\":[\"bzzr://ffcca2aa5a944efc111005cb02eb1df8640f25927835b4c1f80389752aa84de0\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GamePlayer.sol\":{\"keccak256\":\"0xe2252f4009856b619a11f3859b23d68a1838f69b90f4dbe0fe28f4ef72ad1d6e\",\"urls\":[\"bzzr://f8448416e485d42f8610dc30e0af8c531fd4431aa6ec046ef63d4b1d3321e5e5\"]},\"/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol\":{\"keccak256\":\"0x697017f458f6a7eb2bba42b596974cec7cc271046cec5e56cd2a994ceed98da3\",\"urls\":[\"bzzr://5df37e174aea83e9a5ae7e1e1946bb89a380e813036200ad7390f301d6d0cd89\"]}},\"version\":1}",
   "bytecode": "0x",
   "deployedBytecode": "0x",
   "sourceMap": "",
   "deployedSourceMap": "",
   "source": "pragma solidity ^0.5.0;\r\n\r\nimport { GameCommon } from \"./GameCommon.sol\";\r\nimport { IGameStore } from \"./GameStore.sol\";\r\n\r\ninterface IGameItem {\r\n  function GetProps()\r\n    external\r\n    view\r\n    returns (\r\n      GameCommon.ItemGameState state,\r\n      address owner,\r\n      uint price,\r\n      IGameStore game,\r\n      string memory itemKey,\r\n      string memory itemType,\r\n      string memory itemData\r\n    );\r\n\r\n  function SetPrice(uint price) external;\r\n  function ChangeOwner(address newOwner) external;\r\n  function GameChangeOwner(address newOwner) external;\r\n  function GameItemRegistered() external returns (bool);\r\n}\r\n\r\ncontract GameItem is IGameItem {\r\n  using GameCommon for GameCommon.ItemGameState;\r\n\r\n  GameCommon.ItemGameState public GameState;\r\n  address public Owner;\r\n  uint public Price;\r\n  IGameStore public Game;\r\n  string public ItemKey;\r\n  string public ItemType;\r\n  string public ItemData;\r\n\r\n  event ItemCreated(string itemKey, string itemType, address owner);\r\n  event ItemPriceChanged(string itemType, uint price);\r\n  event ItemGameRegistered(string itemType, address game);\r\n  event ItemHasNewOwner(string itemType, address previousOwner, address newOwner);\r\n\r\n  constructor(IGameStore game, string memory itemKey, string memory itemType, string memory itemData) public {\r\n    GameState = GameCommon.ItemGameState.NotRegistered;\r\n    Price = 0;\r\n    Game = game;\r\n    Owner = msg.sender;\r\n    ItemKey = itemKey;\r\n    ItemType = itemType;\r\n    ItemData = itemData;\r\n\r\n    emit ItemCreated(itemKey, itemType, msg.sender);\r\n  }\r\n\r\n  //ANYONE external can call\r\n\r\n  function GetProps() external view returns (\r\n    GameCommon.ItemGameState gameState,\r\n    address owner,\r\n    uint price,\r\n    IGameStore game,\r\n    string memory itemKey,\r\n    string memory itemType,\r\n    string memory itemData\r\n  ) {\r\n    gameState = GameState;\r\n    owner = Owner;\r\n    game = Game;\r\n    price = Price;\r\n    itemKey = ItemKey;\r\n    itemType = ItemType;\r\n    itemData = ItemData;\r\n  }\r\n\r\n  //modifiers\r\n  modifier IsOwner() {\r\n    require(address(msg.sender) != address(0x0), \"You fedx\");\r\n    require(Owner == msg.sender, \"Must be owner\");\r\n    _;\r\n  }\r\n\r\n  modifier IsGameStore() {\r\n    require(address(Game) == msg.sender, \"Must be the GameStore\");\r\n    _;\r\n  }\r\n\r\n  // internal methods\r\n  function ChangeOwnerUnsafe(address newOwner) private {\r\n    address previousOwner = Owner;\r\n    Owner = newOwner;\r\n    emit ItemHasNewOwner(ItemType, previousOwner, newOwner);\r\n  }\r\n\r\n  //OWNER only methods\r\n  function ChangeOwner(address newOwner) external IsOwner {\r\n    ChangeOwnerUnsafe(newOwner);\r\n  }\r\n\r\n  function SetPrice(uint price) external IsOwner {\r\n    Price = price;\r\n    emit ItemPriceChanged(ItemType, price);\r\n  }\r\n\r\n  // GAME methods\r\n  function GameChangeOwner(address newOwner) external IsGameStore {\r\n    ChangeOwnerUnsafe(newOwner);\r\n  }\r\n\r\n  function GameItemRegistered() external IsGameStore returns (bool) {\r\n    GameState = GameCommon.ItemGameState.Registered;\r\n    emit ItemGameRegistered(ItemType, address(Game));\r\n    return true;\r\n  }\r\n\r\n  // helpers\r\n\r\n  function toString(address x) public pure returns (string memory) {\r\n    bytes memory b = new bytes(20);\r\n    for (uint i = 0; i < 20; i++)\r\n    b[i] = byte(uint8(uint(x) / (2**(8*(19 - i)))));\r\n    return string(b);\r\n  }\r\n}\r\n",
-  "sourcePath": "C:\\dev\\bc\\unity\\poc4\\contracts\\GameItem.sol",
+  "sourcePath": "C:\\dev\\bc\\ds2\\bc-community-samples\\unity-asset-app\\contracts\\GameItem.sol",
   "ast": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
     "exportedSymbols": {
       "GameItem": [
         500
@@ -128,7 +128,7 @@
         "src": "0:23:2"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 141,
         "nodeType": "ImportDirective",
@@ -144,7 +144,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
         "file": "./GameStore.sol",
         "id": 143,
         "nodeType": "ImportDirective",
@@ -1406,7 +1406,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "1403:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1613,7 +1613,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "1534:3:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -2388,7 +2388,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1568,
+                                "referencedDeclaration": 1551,
                                 "src": "2054:3:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -2542,10 +2542,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2038:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2608,7 +2608,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2118:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2669,10 +2669,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2101:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2799,7 +2799,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2221:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2860,10 +2860,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2196:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4689,7 +4689,7 @@
     "src": "0:3311:2"
   },
   "legacyAST": {
-    "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameItem.sol",
+    "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameItem.sol",
     "exportedSymbols": {
       "GameItem": [
         500
@@ -4713,7 +4713,7 @@
         "src": "0:23:2"
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameCommon.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameCommon.sol",
         "file": "./GameCommon.sol",
         "id": 141,
         "nodeType": "ImportDirective",
@@ -4729,7 +4729,7 @@
         "unitAlias": ""
       },
       {
-        "absolutePath": "/C/dev/bc/unity/poc4/contracts/GameStore.sol",
+        "absolutePath": "/C/dev/bc/ds2/bc-community-samples/unity-asset-app/contracts/GameStore.sol",
         "file": "./GameStore.sol",
         "id": 143,
         "nodeType": "ImportDirective",
@@ -5991,7 +5991,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1568,
+                        "referencedDeclaration": 1551,
                         "src": "1403:3:2",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -6198,7 +6198,7 @@
                           "name": "msg",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1568,
+                          "referencedDeclaration": 1551,
                           "src": "1534:3:2",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_message",
@@ -6973,7 +6973,7 @@
                                 "name": "msg",
                                 "nodeType": "Identifier",
                                 "overloadedDeclarations": [],
-                                "referencedDeclaration": 1568,
+                                "referencedDeclaration": 1551,
                                 "src": "2054:3:2",
                                 "typeDescriptions": {
                                   "typeIdentifier": "t_magic_message",
@@ -7127,10 +7127,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2038:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7193,7 +7193,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2118:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -7254,10 +7254,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2101:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -7384,7 +7384,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1568,
+                            "referencedDeclaration": 1551,
                             "src": "2221:3:2",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -7445,10 +7445,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1571,
-                        1572
+                        1554,
+                        1555
                       ],
-                      "referencedDeclaration": 1572,
+                      "referencedDeclaration": 1555,
                       "src": "2196:7:2",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -9279,7 +9279,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.6",
-  "updatedAt": "2019-04-30T20:41:36.714Z",
+  "updatedAt": "2019-05-01T03:34:11.163Z",
   "devdoc": {
     "methods": {}
   },
