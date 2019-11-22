@@ -1,0 +1,21 @@
+# Logs
+logs
+*.log
+
+# Directories used by tools like mocha & istanbul
+coverage
+shippable
+
+# Dependency directory
+node_modules
+
+# Generated files
+config/development/contracts.json
+config/development/*.sol.js
+config/test/contracts.json
+#We keep the build directory so we store the latest build. aybe referencing it out of the Unity project.
+#build
+dist
+
+#for now i keep the mnemonic public available, so people can get started easy.
+#.mnemonic
